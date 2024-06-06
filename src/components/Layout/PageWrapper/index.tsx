@@ -4,6 +4,7 @@ import { Flex, Button, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { GiCompactDisc } from "react-icons/gi";
 
 import Menu from "@/src/components/Layout/Menu";
+import Header from "../Header";
 
 const styles = {
   mainContainer: {
@@ -13,6 +14,7 @@ const styles = {
   contentContainer: {
     w: { base: "100%", lg: "calc(100% - 320px)" },
     h: "100vh",
+    alignItems: "center",
     bg: "#F3F4F8",
   },
   menuButtonContainer: {
@@ -34,11 +36,15 @@ function PageWrapper(props: { children: ReactElement }) {
       <Menu isOpen={isDesktop ? true : isOpen} onClose={onClose} />
 
       <Flex {...styles.contentContainer} direction="column" position="relative">
+        {/* MENU TRIGGER */}
         <Flex {...styles.menuButtonContainer} position="absolute">
           <Button variant="unstyled" onClick={onOpen}>
             <GiCompactDisc style={styles.menuButtonIcon} />
           </Button>
         </Flex>
+
+        {/* HEADER */}
+        <Header />
 
         {children}
       </Flex>
