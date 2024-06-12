@@ -8,15 +8,35 @@ import {
   DrawerCloseButton,
   Input,
   Button,
+  Text,
 } from "@chakra-ui/react";
 
-function Menu(props: { isOpen: boolean; onClose: () => void }) {
-  const { isOpen, onClose } = props;
+function Menu(props: {
+  isOpen: boolean;
+  onClose: () => void;
+  isDesktop: boolean;
+}) {
+  const { isOpen, onClose, isDesktop } = props;
 
+  /* DESKTOP */
+  if (isDesktop) {
+    return (
+      <Flex
+        direction="column"
+        w={{ base: "0", lg: "320px" }}
+        h="100vh"
+        zIndex="overlay"
+        boxShadow="md"
+      >
+        <Text>DESKTOP</Text>
+      </Flex>
+    );
+  }
+
+  /* MOBILE */
   return (
     <Flex direction="column" w={{ base: "0", lg: "320px" }}>
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
-        {/* <DrawerOverlay /> */}
         <DrawerContent bg="#F9F9F9">
           <DrawerCloseButton />
           <DrawerHeader>Create your account</DrawerHeader>
