@@ -12,9 +12,9 @@ const styles = {
     h: "100vh",
   },
   contentContainer: {
-    w: { base: "100%", lg: "calc(100% - 320px)" },
+    w: { base: "100%", lg: "calc(100% - 250px)" },
     alignItems: "center",
-    bg: "#F3F4F8",
+    bg: "magnolia",
   },
   menuButtonContainer: {
     display: { base: "flex", lg: "none" },

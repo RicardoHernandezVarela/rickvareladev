@@ -7,6 +7,14 @@ import PageWrapper from "../src/components/Layout/PageWrapper";
 
 // 2. Extend the theme to include custom colors, fonts, etc
 const colors = {
+  magnolia: "#FEF4FF",
+  bleu: "#1D84D7",
+  eerieBlack: "#1E2122",
+  delftBlue: "#2B357D",
+  bleuDeFrance: "#1D84D7",
+  mainMenuOption: "#99938F",
+  violetBlue: "#3946A7",
+  byzantineBlue: "#4957C1",
   brand: {
     900: "#1a365d",
     800: "#153e75",

@@ -11,6 +11,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+import MenuContent from "./MenuContent";
+
 function Menu(props: {
   isOpen: boolean;
   onClose: () => void;
@@ -23,34 +25,24 @@ function Menu(props: {
     return (
       <Flex
         direction="column"
-        w={{ base: "0", lg: "320px" }}
+        w={{ base: "0", lg: "250px" }}
         h="100vh"
         zIndex="overlay"
         boxShadow="md"
+        bg="white"
       >
-        <Text>DESKTOP</Text>
+        <MenuContent />
       </Flex>
     );
   }
 
   /* MOBILE */
   return (
-    <Flex direction="column" w={{ base: "0", lg: "320px" }}>
-      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+    <Flex direction="column">
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="sm">
         <DrawerContent bg="#F9F9F9">
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
-
-          <DrawerBody>
-            <Input placeholder="Type here..." />
-          </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
+          <MenuContent />
         </DrawerContent>
       </Drawer>
     </Flex>
