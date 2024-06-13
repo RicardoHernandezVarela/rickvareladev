@@ -1,4 +1,4 @@
-import routes from "@/src/components/constants/routes";
+import routes from "@/src/constants/routes";
 
 const menuOptions = {
   dev: {

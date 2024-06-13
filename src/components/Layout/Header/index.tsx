@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 
 import {
@@ -8,16 +9,16 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Avatar,
-  Badge,
+  Link,
 } from "@chakra-ui/react";
 
 import { IoIosArrowForward } from "react-icons/io";
 
-import breadCrumbsData from "../../constants/breadCrumbsData";
+import breadCrumbsData from "../../../constants/breadCrumbsData";
 
 const styles = {
   header: {
-    w: "1062px",
+    w: "76.5vw",
     h: "auto",
     justifyContent: "space-between",
     alignItems: "center",
@@ -25,20 +26,20 @@ const styles = {
     px: "15px",
   },
   primaryBreadcrumbItem: {
-    color: "#0A0502",
+    color: "eerieBlack",
     fontSize: "24px",
     fontWeight: "700",
     lineHeight: "28px",
     letterSpacing: "0.12px",
   },
   secondaryBreadcrumbItem: {
-    color: "#99938F",
+    color: "mainMenuOption",
     fontSize: "20px",
     fontWeight: "500",
     lineHeight: "28px",
     letterSpacing: "0.2px",
   },
-  separator: { width: "16px", height: "16px", color: "#0A0502" },
+  separator: { width: "16px", height: "16px", color: "#1E2122" },
 };
 
 function Header() {
@@ -57,15 +58,23 @@ function Header() {
         separator={<IoIosArrowForward style={styles.separator} />}
       >
         <BreadcrumbItem {...styles.primaryBreadcrumbItem}>
-          <BreadcrumbLink href={primaryItem?.route} textTransform="capitalize">
+          <Link
+            as={NextLink}
+            href={primaryItem?.route}
+            textTransform="capitalize"
+          >
             {primaryItem?.text}
-          </BreadcrumbLink>
+          </Link>
         </BreadcrumbItem>
 
         <BreadcrumbItem {...styles.secondaryBreadcrumbItem}>
-          <BreadcrumbLink href={secondaryItem?.route} textTransform="capitalize">
+          <Link
+            as={NextLink}
+            href={secondaryItem?.route}
+            textTransform="capitalize"
+          >
             {secondaryItem?.text}
-          </BreadcrumbLink>
+          </Link>
         </BreadcrumbItem>
       </Breadcrumb>
 
@@ -73,8 +82,12 @@ function Header() {
       <Flex>
         <Avatar src="https://bit.ly/dan-abramov" />
         <Box ml="3">
-          <Text fontWeight="bold">Rick Varela</Text>
-          <Text fontSize="sm">Frontend Developer</Text>
+          <Text color="eerieBlack" fontWeight="bold">
+            Rick Varela
+          </Text>
+          <Text color="eerieBlack" fontSize="sm">
+            Frontend Developer
+          </Text>
         </Box>
       </Flex>
     </Flex>

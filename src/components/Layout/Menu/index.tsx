@@ -1,14 +1,8 @@
 import {
   Flex,
   Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
   DrawerContent,
   DrawerCloseButton,
-  Input,
-  Button,
-  Text,
 } from "@chakra-ui/react";
 
 import MenuContent from "./MenuContent";

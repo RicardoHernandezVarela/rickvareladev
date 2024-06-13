@@ -10,7 +10,7 @@ const styles = {
     w: "100%",
   },
   workExperienceContainer: {
-    w: "1062px",
+    w: "76.5vw",
     h: "317px",
     mt: "8px",
     mb: "16px",
@@ -25,14 +25,14 @@ const styles = {
     mb: "32px",
   },
   myProjectsContainer: {
-    w: "750px",
+    w: "53vw",
     h: "441px",
     bg: "white",
     borderRadius: "24px",
     boxShadow: "sm",
   },
   reviewsContainer: {
-    w: "281px",
+    w: "21.17vw",
     h: "441px",
     bg: "white",
     borderRadius: "24px",
