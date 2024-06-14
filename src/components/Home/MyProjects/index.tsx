@@ -1,4 +1,5 @@
-import { Flex, Text } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { Flex, Text, Link } from "@chakra-ui/react";
 
 import ProjectCard from "./ProjectCard";
 
@@ -12,6 +13,8 @@ const styles = {
     boxShadow: "sm",
   },
   titleContainer: {
+    justifyContent: "space-between",
+    alignItems: "center",
     mb: "20px",
   },
   title: {
@@ -20,6 +23,17 @@ const styles = {
     lineHeight: "40px",
     letterSpacing: "1px",
     color: "delftBlue",
+  },
+  seeAll: {
+    fontSize: "14px",
+    fontWeight: "500",
+    lineHeight: "16px",
+    letterSpacing: "0.5px",
+    color: "mainMenuOption",
+    _hover: {
+      textDecoration: "none",
+      opacity: "0.8",
+    },
   },
   projectsCards: {
     alignItems: "center",
@@ -33,6 +47,10 @@ function MyProjects() {
     <Flex {...styles.myProjectsContainer} direction="column">
       <Flex {...styles.titleContainer}>
         <Text {...styles.title}>{"My Projects"}</Text>
+
+        <Link {...styles.seeAll} as={NextLink} href={"/"}>
+          <Text>{"See All"}</Text>
+        </Link>
       </Flex>
 
       <Flex direction="column" overflowY="scroll">
