@@ -1,5 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 
+import WorkExperience from "@/src/components/Home/WorkExperience";
+
 const styles = {
   mainContainer: {
     w: "100%",
@@ -8,15 +10,6 @@ const styles = {
   },
   scrollableContainer: {
     w: "100%",
-  },
-  workExperienceContainer: {
-    w: "76.5vw",
-    h: "317px",
-    mt: "8px",
-    mb: "16px",
-    bg: "white",
-    borderRadius: "24px",
-    boxShadow: "sm",
   },
   projectsContainer: {
     w: "100%",
@@ -45,7 +38,7 @@ function Home() {
     <Flex {...styles.mainContainer} direction="column" overflowY="scroll">
       <Flex direction="column">
         {/* WORK EXPERIENCE */}
-        <Flex {...styles.workExperienceContainer}></Flex>
+        <WorkExperience />
 
         {/* PROJECTS */}
         <Flex {...styles.projectsContainer}>
