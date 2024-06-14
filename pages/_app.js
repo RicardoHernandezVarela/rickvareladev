@@ -15,6 +15,9 @@ const colors = {
   mainMenuOption: "#99938F",
   violetBlue: "#3946A7",
   byzantineBlue: "#4957C1",
+  lavender: "#E2E6F3",
+  vistaBlue: "#8C9CCF",
+  powderBlue: "#7E8EC9",
   brand: {
     900: "#1a365d",
     800: "#153e75",

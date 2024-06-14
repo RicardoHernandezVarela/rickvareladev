@@ -1,6 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 
 import WorkExperience from "@/src/components/Home/WorkExperience";
+import MyProjects from "@/src/components/Home/MyProjects";
 
 const styles = {
   mainContainer: {
@@ -43,7 +44,7 @@ function Home() {
         {/* PROJECTS */}
         <Flex {...styles.projectsContainer}>
           {/* MY PROJECTS */}
-          <Flex {...styles.myProjectsContainer}></Flex>
+          <MyProjects />
 
           {/* REVIEWS */}
           <Flex {...styles.reviewsContainer}></Flex>

@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { Flex, Text, Link } from "@chakra-ui/react";
+import { Flex, Text, Link, Image } from "@chakra-ui/react";
 
 const styles = {
   link: {
@@ -55,7 +55,13 @@ function WorkExperienceCard() {
   return (
     <Link href={"/"} as={NextLink} {...styles.link}>
       <Flex {...styles.card} direction="column">
-        <Flex {...styles.cardImage}></Flex>
+        <Flex {...styles.cardImage} overflow="hidden">
+          <Image
+            objectFit="cover"
+            src="https://picsum.photos/120/110"
+            alt="work img"
+          />
+        </Flex>
         <Text {...styles.placeText}>{"Place"}</Text>
         <Text {...styles.positionText}>{"Position"}</Text>
         <Text {...styles.dateText}>{"Dates"}</Text>
