@@ -47,7 +47,6 @@ function Header() {
   const pathname = router?.pathname;
 
   const breadCrumbData = breadCrumbsData[pathname];
-  const { primaryItem, secondaryItem } = breadCrumbData;
 
   return (
     <Flex {...styles.header}>
@@ -60,20 +59,20 @@ function Header() {
         <BreadcrumbItem {...styles.primaryBreadcrumbItem}>
           <Link
             as={NextLink}
-            href={primaryItem?.route}
+            href={breadCrumbData?.primaryItem?.route || "/"}
             textTransform="capitalize"
           >
-            {primaryItem?.text}
+            {breadCrumbData?.primaryItem?.text || ""}
           </Link>
         </BreadcrumbItem>
 
         <BreadcrumbItem {...styles.secondaryBreadcrumbItem}>
           <Link
             as={NextLink}
-            href={secondaryItem?.route}
+            href={breadCrumbData?.secondaryItem?.route || "/"}
             textTransform="capitalize"
           >
-            {secondaryItem?.text}
+            {breadCrumbData?.secondaryItem?.text || ""}
           </Link>
         </BreadcrumbItem>
       </Breadcrumb>
