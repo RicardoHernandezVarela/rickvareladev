@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import NextLink from "next/link";
 import {
   Flex,
@@ -6,9 +5,8 @@ import {
   Image,
   Link,
   Button,
-  Fade,
-  Slide,
   SlideFade,
+  Skeleton,
 } from "@chakra-ui/react";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -44,7 +42,6 @@ const styles = {
     w: "250px",
     h: "250px",
     borderRadius: "8px",
-    border: "1px",
   },
   reviewDetails: {
     alignItems: "center",
@@ -84,7 +81,8 @@ const styles = {
 };
 
 function Reviews() {
-  const { cardState, toTheRight, handleCardChange } = useReviews();
+  const { cardState, toTheRight, handleCardChange, selectedReview } =
+    useReviews();
 
   return (
     <Flex {...styles.reviewsContainer} direction="column" position="relative">
@@ -116,20 +114,24 @@ function Reviews() {
       >
         <Flex direction="column">
           <Flex {...styles.image} overflow="hidden">
-            <Image
-              w="250px"
-              h="250px"
-              objectFit="cover"
-              src="https://i.ytimg.com/vi/K8IXWzKcJEQ/hqdefault.jpg"
-              alt="review img"
-            />
+            {!cardState.isOpen && <Skeleton {...styles.image} bg="magnolia" />}
+
+            {cardState.isOpen && (
+              <Image
+                w="250px"
+                h="250px"
+                objectFit="cover"
+                src={selectedReview.img}
+                alt="review img"
+              />
+            )}
           </Flex>
 
           <Flex {...styles.reviewDetails} direction="column">
             <Link {...styles.recordName} as={NextLink} href={"/"}>
-              <Text>{"Magnolia Electric Co."}</Text>
+              <Text>{selectedReview.recordName}</Text>
             </Link>
-            <Text {...styles.artistName}>{"Songs:Ohia"}</Text>
+            <Text {...styles.artistName}>{selectedReview.artistName}</Text>
           </Flex>
         </Flex>
       </SlideFade>

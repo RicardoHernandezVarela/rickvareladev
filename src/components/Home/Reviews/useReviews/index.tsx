@@ -2,6 +2,24 @@ import { useEffect, useState } from "react";
 
 const titleOptions = ["Prev Review", "Latest Review", "Next Review"];
 
+const reviewsList: any = [
+  {
+    img: "https://upload.wikimedia.org/wikipedia/en/2/2c/Stevemcqueen.jpg",
+    recordName: "Steve McQueen",
+    artistName: "Prefab Sprout",
+  },
+  {
+    img: "https://i.ytimg.com/vi/K8IXWzKcJEQ/hqdefault.jpg",
+    recordName: "Magnolia Electric Co.",
+    artistName: "Songs:Ohia",
+  },
+  {
+    img: "https://upload.wikimedia.org/wikipedia/en/e/eb/Nocturne_%28Wild_Nothing_album_-_cover_art%29.jpg",
+    recordName: "Nocturne",
+    artistName: "Wild Nothing",
+  },
+];
+
 function useReviews() {
   const [cardState, setCardState] = useState({
     index: 1,
@@ -10,6 +28,8 @@ function useReviews() {
   });
 
   const [toTheRight, setToTheRight] = useState(false);
+
+  const [selectedReview, setSelectedReview] = useState(reviewsList[1]);
 
   const handleCardChange = (params: { next: boolean }) => {
     const { next } = params;
@@ -25,15 +45,17 @@ function useReviews() {
     const realNewIndex = Math.min(Math.max(0, newIndex), 2);
 
     setTimeout(() => {
+      setSelectedReview(reviewsList[realNewIndex]);
+
       setCardState({
         index: realNewIndex,
         title: titleOptions[realNewIndex],
         isOpen: true,
       });
-    }, 500);
+    }, 510);
   };
 
-  return { cardState, toTheRight, handleCardChange };
+  return { cardState, toTheRight, handleCardChange, selectedReview };
 }
 
 export default useReviews;
