@@ -4,6 +4,8 @@ import WorkExperience from "@/src/components/Home/WorkExperience";
 import MyProjects from "@/src/components/Home/MyProjects";
 import Reviews from "@/src/components/Home/Reviews";
 
+import scrollBarStyles from "@/src/constants/scrollBarStyles";
+
 const styles = {
   mainContainer: {
     w: "100%",
@@ -37,7 +39,12 @@ const styles = {
 
 function Home() {
   return (
-    <Flex {...styles.mainContainer} direction="column" overflowY="scroll">
+    <Flex
+      {...styles.mainContainer}
+      direction="column"
+      overflowY="scroll"
+      css={scrollBarStyles}
+    >
       <Flex direction="column">
         {/* WORK EXPERIENCE */}
         <WorkExperience />

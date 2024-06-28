@@ -3,6 +3,8 @@ import { Flex, Text, Link } from "@chakra-ui/react";
 
 import ProjectCard from "./ProjectCard";
 
+import scrollBarStyles from "@/src/constants/scrollBarStyles";
+
 const styles = {
   myProjectsContainer: {
     w: "53vw",
@@ -53,7 +55,7 @@ function MyProjects() {
         </Link>
       </Flex>
 
-      <Flex direction="column" overflowY="scroll">
+      <Flex direction="column" overflowY="scroll" css={scrollBarStyles}>
         <Flex {...styles.projectsCards} direction="column">
           <ProjectCard />
 
