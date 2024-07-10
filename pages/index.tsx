@@ -9,31 +9,17 @@ import scrollBarStyles from "@/src/constants/scrollBarStyles";
 const styles = {
   mainContainer: {
     w: "100%",
+    maxW: "1650px",
     h: "100vh",
     alignItems: "center",
   },
-  scrollableContainer: {
-    w: "100%",
-  },
   projectsContainer: {
-    w: "100%",
+    w: { base: "100%", lg: "72vw", xl: "100%" },
+    maxW: "1650px",
+    alignItems: { base: "center", lg: "normal" },
     gap: "32px",
     mt: "16px",
-    mb: "32px",
-  },
-  myProjectsContainer: {
-    w: "53vw",
-    h: "441px",
-    bg: "white",
-    borderRadius: "24px",
-    boxShadow: "sm",
-  },
-  reviewsContainer: {
-    w: "21.17vw",
-    h: "441px",
-    bg: "white",
-    borderRadius: "24px",
-    boxShadow: "sm",
+    mb: { base: "20px", lg: "20px" },
   },
 };
 
@@ -45,12 +31,15 @@ function Home() {
       overflowY="scroll"
       css={scrollBarStyles}
     >
-      <Flex direction="column">
+      <Flex alignItems="center" direction="column">
         {/* WORK EXPERIENCE */}
         <WorkExperience />
 
         {/* PROJECTS */}
-        <Flex {...styles.projectsContainer}>
+        <Flex
+          {...styles.projectsContainer}
+          direction={{ base: "column", lg: "row" }}
+        >
           {/* MY PROJECTS */}
           <MyProjects />
 

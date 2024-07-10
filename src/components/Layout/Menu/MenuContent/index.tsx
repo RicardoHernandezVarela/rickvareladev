@@ -28,18 +28,19 @@ const styles = {
     w: "100%",
     h: "100vh",
     px: "30px",
-    py: "20px",
+    py: { base: "20px", lg: "10px", xl: "20px" },
     alignItems: "center",
   },
   imageContainer: {
-    w: "150px",
-    h: "150px",
-    mb: "35px",
+    w: { md: "100px", lg: "120px", xl: "150px" },
+    h: { md: "100px", lg: "120px", xl: "150px" },
+    mb: { md: "5px", lg: "20px", xl: "35px" },
     borderRadius: "full",
     boxShadow: "md",
   },
   menuOptionsContainer: {
     w: "100%",
+    mt: { base: "25px", lg: "0px" },
   },
   menuValues: {
     mb: "15px",
@@ -99,7 +100,10 @@ function MenuContent() {
   return (
     <Flex {...styles.mainContainer} direction="column">
       {/* IMAGE */}
-      <Flex {...styles.imageContainer}></Flex>
+      <Flex
+        {...styles.imageContainer}
+        display={{ base: "none", md: "flex" }}
+      ></Flex>
 
       {/* MENU */}
 

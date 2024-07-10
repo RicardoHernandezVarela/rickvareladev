@@ -7,14 +7,16 @@ import scrollBarStyles from "@/src/constants/scrollBarStyles";
 
 const styles = {
   myProjectsContainer: {
-    w: "53vw",
+    w: { base: "87vw", lg: "50vw", xl: "53vw" },
     h: "441px",
+    justifyContent: "center",
     bg: "white",
-    p: "24px",
+    p: { base: "12px", lg: "24px" },
     borderRadius: "24px",
     boxShadow: "sm",
   },
   titleContainer: {
+    w: "100%",
     justifyContent: "space-between",
     alignItems: "center",
     mb: "20px",
@@ -37,7 +39,12 @@ const styles = {
       opacity: "0.8",
     },
   },
+  projectsCardsContainer: {
+    w: "100%",
+    alignItems: "center",
+  },
   projectsCards: {
+    w: "100%",
     alignItems: "center",
     gap: "36px",
     py: "32px",
@@ -55,7 +62,12 @@ function MyProjects() {
         </Link>
       </Flex>
 
-      <Flex direction="column" overflowY="scroll" css={scrollBarStyles}>
+      <Flex
+        {...styles.projectsCardsContainer}
+        direction="column"
+        overflowY="scroll"
+        css={scrollBarStyles}
+      >
         <Flex {...styles.projectsCards} direction="column">
           <ProjectCard />
 

@@ -2,9 +2,12 @@ import { Flex, Text } from "@chakra-ui/react";
 
 import WorkExperienceCard from "./WorkExperienceCard";
 
+import scrollBarStyles from "@/src/constants/scrollBarStyles";
+
 const styles = {
   workExperienceContainer: {
-    w: "76.5vw",
+    w: { base: "87vw", lg: "72vw", xl: "76.5vw" },
+    maxW: "1650px",
     h: "317px",
     mt: "8px",
     mb: "16px",

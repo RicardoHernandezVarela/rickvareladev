@@ -18,23 +18,25 @@ import breadCrumbsData from "../../../constants/breadCrumbsData";
 
 const styles = {
   header: {
-    w: "76.5vw",
+    w: { base: "100%", lg: "72vw", xl: "76.5vw" },
+    maxW: "1650px",
     h: "auto",
     justifyContent: "space-between",
     alignItems: "center",
-    my: "32px",
+    my: { base: "15px", lg: "32px" },
     px: "15px",
+    gap: { base: "10px", lg: "0" },
   },
   primaryBreadcrumbItem: {
     color: "eerieBlack",
-    fontSize: "24px",
+    fontSize: { base: "18px", lg: "24px" },
     fontWeight: "700",
     lineHeight: "28px",
     letterSpacing: "0.12px",
   },
   secondaryBreadcrumbItem: {
     color: "mainMenuOption",
-    fontSize: "20px",
+    fontSize: { base: "14px", lg: "20px" },
     fontWeight: "500",
     lineHeight: "28px",
     letterSpacing: "0.2px",
@@ -49,7 +51,7 @@ function Header() {
   const breadCrumbData = breadCrumbsData[pathname];
 
   return (
-    <Flex {...styles.header}>
+    <Flex {...styles.header} direction={{ base: "column-reverse", lg: "row" }}>
       {/* BREADCRUMB */}
       <Breadcrumb
         spacing="8px"

@@ -12,7 +12,7 @@ const styles = {
     h: "100vh",
   },
   contentContainer: {
-    w: { base: "100%", lg: "calc(100% - 250px)" },
+    w: { base: "100%", lg: "calc(100% - 230px)", xl: "calc(100% - 250px)" },
     alignItems: "center",
     bg: "magnolia",
   },

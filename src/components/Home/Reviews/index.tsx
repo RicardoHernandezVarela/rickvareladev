@@ -15,7 +15,8 @@ import useReviews from "./useReviews";
 
 const styles = {
   reviewsContainer: {
-    w: "21.17vw",
+    w: { base: "87vw", md: "305px", lg: "305px", xl: "21.17vw" },
+    maxW: "305px",
     h: "441px",
     alignItems: "center",
     bg: "white",

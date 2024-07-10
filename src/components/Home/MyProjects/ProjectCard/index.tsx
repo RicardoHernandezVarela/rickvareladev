@@ -6,7 +6,7 @@ import { MdWeb } from "react-icons/md";
 
 const styles = {
   card: {
-    w: "85%",
+    w: { base: "100%", lg: "85%" },
     h: "100px",
     alignItems: "center",
     bg: "magnolia",
@@ -16,7 +16,7 @@ const styles = {
     borderColor: "vistaBlue",
   },
   textContainer: {
-    ml: "24px",
+    ml: { base: "12px", lg: "24px" },
     gap: "6px",
   },
   link: {
@@ -26,14 +26,14 @@ const styles = {
     },
   },
   projectName: {
-    fontSize: "16px",
+    fontSize: { base: "14px", lg: "16px" },
     fontWeight: "500",
     lineHeight: "19px",
     letterSpacing: "0.5px",
     color: "eerieBlack",
   },
   tools: {
-    fontSize: "14px",
+    fontSize: { base: "12px", lg: "14px" },
     fontWeight: "500",
     lineHeight: "16px",
     letterSpacing: "0.5px",
@@ -45,7 +45,7 @@ const styles = {
     borderRadius: "8px",
     border: "1px",
     borderColor: "delftBlue",
-    top: "-14px",
+    top: { base: "-23px", lg: "-14px" },
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
