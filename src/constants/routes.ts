@@ -1,5 +1,6 @@
 const routes = {
   HOME: "/",
+  EXPERIENCE: "/experience",
   ME: "/me",
 };
 

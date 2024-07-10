@@ -12,7 +12,7 @@ const menuOptions = {
       {
         text: "experience",
         icon: "MdOutlineWork",
-        route: routes.HOME,
+        route: routes.EXPERIENCE,
       },
       {
         text: "projects",

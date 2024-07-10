@@ -43,14 +43,14 @@ function PageWrapper(props: { children: ReactElement }) {
         position="relative"
       >
         {/* MENU TRIGGER */}
-        <Flex {...styles.menuButtonContainer} position="absolute">
+        {/* <Flex {...styles.menuButtonContainer} position="absolute">
           <Button variant="unstyled" onClick={onOpen}>
             <GiCompactDisc style={styles.menuButtonIcon} />
           </Button>
-        </Flex>
+        </Flex> */}
 
         {/* HEADER */}
-        <Header />
+        <Header onOpen={onOpen}/>
 
         {children}
       </Flex>

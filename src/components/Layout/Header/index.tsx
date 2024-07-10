@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import { IoIosArrowForward } from "react-icons/io";
+import { RiMenu2Fill } from "react-icons/ri";
 
 import breadCrumbsData from "../../../constants/breadCrumbsData";
 
@@ -42,9 +43,21 @@ const styles = {
     letterSpacing: "0.2px",
   },
   separator: { width: "16px", height: "16px", color: "#1E2122" },
+  avatarContainer: {
+    w: { base: "100%", lg: "auto" },
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  menuIcon: {
+    width: "30px",
+    height: "30px",
+    color: "#4957C1",
+  },
 };
 
-function Header() {
+function Header(props: { onOpen: () => void }) {
+  const { onOpen } = props;
+
   const router = useRouter();
   const pathname = router?.pathname;
 
@@ -80,7 +93,7 @@ function Header() {
       </Breadcrumb>
 
       {/* AVATAR */}
-      <Flex>
+      <Flex {...styles.avatarContainer}>
         <Avatar src="https://bit.ly/dan-abramov" />
         <Box ml="3">
           <Text color="eerieBlack" fontWeight="bold">
@@ -90,6 +103,10 @@ function Header() {
             Frontend Developer
           </Text>
         </Box>
+
+        <Flex display={{ base: "flex", lg: "none" }} onClick={onOpen}>
+          <RiMenu2Fill style={styles.menuIcon} />
+        </Flex>
       </Flex>
     </Flex>
   );
