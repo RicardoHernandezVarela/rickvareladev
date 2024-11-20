@@ -7,7 +7,6 @@ import {
   Text,
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   Avatar,
   Link,
 } from "@chakra-ui/react";
