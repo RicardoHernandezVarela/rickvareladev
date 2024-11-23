@@ -1,5 +1,8 @@
 import { ChakraProvider } from "@chakra-ui/react";
 
+import "@fontsource/kaisei-decol/400.css";
+import "@fontsource/kaisei-decol/700.css";
+
 // 1. Import the extendTheme function
 import { extendTheme } from "@chakra-ui/react";
 
@@ -34,7 +37,12 @@ const breakpoints = {
   xxl: "1650px",
 };
 
-export const theme = extendTheme({ colors, breakpoints });
+const fonts = {
+  heading: `'Kaisei Decol', serif`,
+  body: `'Kaisei Decol', serif`,
+};
+
+export const theme = extendTheme({ colors, breakpoints, fonts });
 
 // 3. Pass the `theme` prop to the `ChakraProvider`
 function MyApp({ Component, pageProps }) {

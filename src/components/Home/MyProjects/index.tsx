@@ -13,7 +13,7 @@ const styles = {
     bg: "white",
     p: { base: "12px", lg: "24px" },
     borderRadius: "24px",
-    boxShadow: "sm",
+    boxShadow: "md",
   },
   titleContainer: {
     w: "100%",

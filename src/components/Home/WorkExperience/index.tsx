@@ -14,7 +14,8 @@ const styles = {
     p: "24px",
     bg: "white",
     borderRadius: "24px",
-    boxShadow: "sm",
+    boxShadow: "md",
+    //border: "1px"
   },
   titleContainer: {
     mb: "20px",
