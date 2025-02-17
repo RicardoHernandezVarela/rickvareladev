@@ -1,5 +1,6 @@
 import NextLink from "next/link";
-import { Flex, Text, Link, Image } from "@chakra-ui/react";
+import { Flex, Text, Link } from "@chakra-ui/react";
+import Image from "next/image";
 
 const styles = {
   link: {
@@ -22,11 +23,13 @@ const styles = {
   cardImage: {
     w: "120px",
     h: "110px",
-    bg: "bleu",
+    //bg: "bleu",
+    border: "1px",
+    borderColor: "bleu",
     borderRadius: "12px",
   },
   placeText: {
-    fontSize: "16px",
+    fontSize: "15px",
     fontWeight: "500",
     lineHeight: "1",
     letterSpacing: "0.5px",
@@ -35,36 +38,55 @@ const styles = {
     mb: "7px",
   },
   positionText: {
-    fontSize: "14px",
-    fontWeight: "500",
+    fontSize: "12px",
+    fontWeight: "700",
     lineHeight: "1",
     letterSpacing: "0.5px",
     color: "mainMenuOption",
     mb: "7px",
   },
   dateText: {
-    fontSize: "12px",
-    fontWeight: "500",
+    fontSize: "10px",
+    fontWeight: "600",
     lineHeight: "1",
     letterSpacing: "1px",
     color: "bleu",
   },
 };
 
-function WorkExperienceCard() {
+function WorkExperienceCard(props: {
+  place: string;
+  position: string;
+  dates: string;
+  image: { url: string };
+  details?: any;
+  _createdAt: string;
+}) {
+  const { place, position, dates, image, details, _createdAt } = props;
+
   return (
     <Link href={"/"} as={NextLink} {...styles.link}>
       <Flex {...styles.card} direction="column">
         <Flex {...styles.cardImage} overflow="hidden">
-          <Image
-            objectFit="cover"
-            src="https://picsum.photos/120/110"
-            alt="work img"
-          />
+          {image?.url && (
+            <Image
+              src={image?.url}
+              alt="we-img"
+              width={800}
+              height={600}
+              sizes="(max-width: 768px) 100vw, 800px"
+            />
+          )}
         </Flex>
-        <Text {...styles.placeText}>{"Place"}</Text>
-        <Text {...styles.positionText}>{"Position"}</Text>
-        <Text {...styles.dateText}>{"Dates"}</Text>
+        <Text {...styles.placeText} textAlign="center">
+          {place}
+        </Text>
+        <Text {...styles.positionText} textAlign="center">
+          {position}
+        </Text>
+        <Text {...styles.dateText} textAlign="center">
+          {dates}
+        </Text>
       </Flex>
     </Link>
   );
