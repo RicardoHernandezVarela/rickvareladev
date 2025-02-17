@@ -1,5 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 
+import BlockCards from "@/src/sections/BlockCards";
+
 const styles = {
   mainContainer: {
     w: "100%",
@@ -11,11 +13,9 @@ const styles = {
 
 function Experience() {
   return (
-    <Flex
-      {...styles.mainContainer}
-      direction="column"
-      overflowY="scroll"
-    ></Flex>
+    <Flex {...styles.mainContainer} direction="column" overflowY="scroll">
+      <BlockCards />
+    </Flex>
   );
 }
 
