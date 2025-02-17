@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import useExperienceStore from "../../../../store/useExperienceStore";
 import requestStatus from "../../../../constants/requestStatus";
 
 function useWorkExperience() {
+  const experience = useExperienceStore((state: any) => state.experience);
+  const setExperience = useExperienceStore((state: any) => state.setExperience);
+
   const [status, setStatus] = useState(requestStatus.IDLE);
   const [data, setData] = useState<any[]>([]);
 
@@ -12,9 +16,23 @@ function useWorkExperience() {
 
     const responseJSON = await response?.json();
 
-    setData(responseJSON?.data);
+    const workExpData = responseJSON?.data;
+
+    setData(workExpData);
+
+    /* STORE RESULT */
+    if (workExpData) {
+      const workExpDataObj: any = {};
+
+      workExpData.map((item: any) => {
+        workExpDataObj[item?._rev] = item;
+      });
+
+      setExperience(workExpDataObj);
+    }
+
     setStatus(
-      responseJSON?.data ? requestStatus.HAS_SUCCESS : requestStatus.HAS_ERROR
+      workExpData ? requestStatus.HAS_SUCCESS : requestStatus.HAS_ERROR
     );
   };
 

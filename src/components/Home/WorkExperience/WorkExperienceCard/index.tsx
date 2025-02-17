@@ -59,13 +59,14 @@ function WorkExperienceCard(props: {
   position: string;
   dates: string;
   image: { url: string };
-  details?: any;
   _createdAt: string;
+  _rev: string;
+  details?: any;
 }) {
-  const { place, position, dates, image, details, _createdAt } = props;
+  const { place, position, dates, image, details, _createdAt, _rev } = props;
 
   return (
-    <Link href={"/"} as={NextLink} {...styles.link}>
+    <Link href={`/work-experience/${_rev}`} as={NextLink} {...styles.link}>
       <Flex {...styles.card} direction="column">
         <Flex {...styles.cardImage} overflow="hidden">
           {image?.url && (

@@ -45,8 +45,9 @@ function WorkExperience() {
       </Flex>
 
       {(status === requestStatus.IDLE ||
-        status === requestStatus.IS_LOADING) && <Spinner size="xl" color="bleu" thickness="4px" speed="0.65s" />
-}
+        status === requestStatus.IS_LOADING) && (
+        <Spinner size="xl" color="bleu" thickness="4px" speed="0.65s" />
+      )}
 
       {/* WORK EXPERIENCE CARDS */}
       {data && status === requestStatus.HAS_SUCCESS && (
@@ -61,6 +62,7 @@ function WorkExperience() {
                 image={item?.image}
                 details={item?.details}
                 _createdAt={item?._createdAt}
+                _rev={item?._rev}
               />
             );
           })}
