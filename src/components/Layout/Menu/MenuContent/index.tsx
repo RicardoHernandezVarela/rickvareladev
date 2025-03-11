@@ -94,7 +94,7 @@ const styles = {
   },
 };
 
-function MenuContent() {
+function MenuContent({ onClose }: { onClose: () => void }) {
   const menuValues = Object.values(menuOptions);
 
   return (
@@ -125,6 +125,7 @@ function MenuContent() {
                       as={NextLink}
                       {...styles.subOption}
                       href={option.route}
+                      onClick={onClose}
                     >
                       <Icon style={styles.subOptionIcon} />
 

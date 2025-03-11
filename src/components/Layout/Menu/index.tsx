@@ -25,7 +25,7 @@ function Menu(props: {
         boxShadow="md"
         bg="white"
       >
-        <MenuContent />
+        <MenuContent onClose={onClose} />
       </Flex>
     );
   }
@@ -36,7 +36,7 @@ function Menu(props: {
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="sm">
         <DrawerContent bg="#F9F9F9">
           <DrawerCloseButton />
-          <MenuContent />
+          <MenuContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
     </Flex>
