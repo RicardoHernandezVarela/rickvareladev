@@ -13,6 +13,8 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import useReviews from "./useReviews";
 
+import routes from "@/src/constants/routes";
+
 const styles = {
   reviewsContainer: {
     w: { base: "87vw", md: "305px", lg: "305px", xl: "21.17vw" },
@@ -137,7 +139,7 @@ function Reviews() {
         </Flex>
       </SlideFade>
 
-      <Link {...styles.seeAll} as={NextLink} href={"/"}>
+      <Link {...styles.seeAll} as={NextLink} href={routes.REVIEWS}>
         <Text>{"All Reviews"}</Text>
       </Link>
     </Flex>
