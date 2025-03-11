@@ -21,7 +21,7 @@ const styles = {
     alignItems: "center",
     bg: "white",
     borderRadius: "24px",
-    boxShadow: "sm",
+    boxShadow: "md",
     p: "20px",
   },
   titleContainer: {
