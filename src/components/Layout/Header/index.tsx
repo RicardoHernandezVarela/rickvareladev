@@ -29,17 +29,21 @@ const styles = {
   },
   primaryBreadcrumbItem: {
     color: "eerieBlack",
-    fontSize: { base: "18px", lg: "24px" },
+    fontSize: { base: "14px", lg: "20px" },
     fontWeight: "700",
-    lineHeight: "28px",
+    lineHeight: "1",
     letterSpacing: "0.12px",
+    m: "0",
+    p: "0",
   },
   secondaryBreadcrumbItem: {
     color: "mainMenuOption",
     fontSize: { base: "14px", lg: "20px" },
     fontWeight: "500",
-    lineHeight: "28px",
-    letterSpacing: "0.2px",
+    lineHeight: "1",
+    letterSpacing: "0.12px",
+    m: "0",
+    p: "0",
   },
   separator: { width: "16px", height: "16px", color: "#1E2122" },
   avatarContainer: {
@@ -60,6 +64,8 @@ function Header(props: { onOpen: () => void }) {
   const router = useRouter();
   const pathname = router?.pathname;
 
+  console.log("pathname: ", pathname);
+
   const breadCrumbData = breadCrumbsData[pathname];
 
   return (
@@ -67,6 +73,7 @@ function Header(props: { onOpen: () => void }) {
       {/* BREADCRUMB */}
       <Breadcrumb
         spacing="8px"
+        display="flex"
         alignItems="center"
         separator={<IoIosArrowForward style={styles.separator} />}
       >
@@ -76,7 +83,7 @@ function Header(props: { onOpen: () => void }) {
             href={breadCrumbData?.primaryItem?.route || "/"}
             textTransform="capitalize"
           >
-            {breadCrumbData?.primaryItem?.text || ""}
+            {breadCrumbData?.primaryItem?.text || "home"}
           </Link>
         </BreadcrumbItem>
 

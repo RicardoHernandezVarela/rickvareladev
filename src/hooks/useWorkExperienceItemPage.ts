@@ -13,7 +13,7 @@ function useWorkExperienceItemPage() {
   const [data, setData] = useState<any>(undefined);
 
   const getData = () => {
-    if (!router?.query?.rev) return;
+    if (!router?.query?.rev || !experience) return;
 
     setStatus(requestStatus.IS_LOADING);
 

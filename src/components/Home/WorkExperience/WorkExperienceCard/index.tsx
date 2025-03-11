@@ -2,6 +2,8 @@ import NextLink from "next/link";
 import { Flex, Text, Link } from "@chakra-ui/react";
 import Image from "next/image";
 
+import routes from "../../../../constants/routes";
+
 const styles = {
   link: {
     _hover: {
@@ -66,7 +68,11 @@ function WorkExperienceCard(props: {
   const { place, position, dates, image, details, _createdAt, _rev } = props;
 
   return (
-    <Link href={`/work-experience/${_rev}`} as={NextLink} {...styles.link}>
+    <Link
+      href={`${routes.WORK_EXPERIENCE_ITEM}${_rev}`}
+      as={NextLink}
+      {...styles.link}
+    >
       <Flex {...styles.card} direction="column">
         <Flex {...styles.cardImage} overflow="hidden">
           {image?.url && (
