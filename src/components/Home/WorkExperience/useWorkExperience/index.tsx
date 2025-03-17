@@ -1,16 +1,36 @@
 import { useEffect, useState } from "react";
 import useExperienceStore from "../../../../store/useExperienceStore";
+import useSanityDataStore from "../../../../store/useSanityDataStore";
+
 import requestStatus from "../../../../constants/requestStatus";
 
 function useWorkExperience() {
   const experience = useExperienceStore((state: any) => state.experience);
   const setExperience = useExperienceStore((state: any) => state.setExperience);
 
+  const sanityData = useSanityDataStore((state: any) => state.sanityData);
+  const insertSanityData = useSanityDataStore(
+    (state: any) => state.insertSanityData
+  );
+
   const [status, setStatus] = useState(requestStatus.IDLE);
   const [data, setData] = useState<any[]>([]);
 
   const getData = async () => {
     setStatus(requestStatus.IS_LOADING);
+
+    const dataId = "work-experience";
+    const storedData = sanityData[dataId];
+
+    if (storedData) {
+      setData(storedData);
+
+      setStatus(
+        storedData ? requestStatus.HAS_SUCCESS : requestStatus.HAS_ERROR
+      );
+
+      return;
+    }
 
     const response = await fetch("/api/get-work-experience");
 
@@ -22,13 +42,7 @@ function useWorkExperience() {
 
     /* STORE RESULT */
     if (workExpData) {
-      const workExpDataObj: any = {};
-
-      workExpData.map((item: any) => {
-        workExpDataObj[item?._rev] = item;
-      });
-
-      setExperience(workExpDataObj);
+      insertSanityData(dataId, workExpData);
     }
 
     setStatus(
