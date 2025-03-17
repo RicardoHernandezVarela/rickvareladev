@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 
-import ReviewCard from "@/src/components/Home/Reviews/ReviewCard";
+import VinylCard from "@/src/components/VinylCollection/VinylCard";
 
 const styles = {
   mainContainer: {
@@ -17,7 +17,7 @@ const styles = {
   },
 };
 
-const reviewsList = [
+const vinylList = [
   {
     img: "https://i.ytimg.com/vi/K8IXWzKcJEQ/hqdefault.jpg",
     recordName: "Magnolia Electric Co.",
@@ -52,19 +52,19 @@ const reviewsList = [
   },
 ];
 
-function Reviews() {
+function VinylCollection() {
   return (
     <Flex {...styles.mainContainer} overflowY="scroll" flexWrap="wrap">
-      {reviewsList?.map((review: Record<string, string>, index: number) => {
+      {vinylList?.map((vinyl: Record<string, string>, index: number) => {
         return (
-          <ReviewCard
+          <VinylCard
             key={index}
             loading={false}
-            img={review?.img}
-            recordName={review?.recordName}
-            artistName={review?.artistName}
-            year={review?.year}
-            preview_url={review?.preview_url}
+            img={vinyl?.img}
+            recordName={vinyl?.recordName}
+            artistName={vinyl?.artistName}
+            year={vinyl?.year}
+            preview_url={vinyl?.preview_url}
           />
         );
       })}
@@ -75,4 +75,4 @@ function Reviews() {
   );
 }
 
-export default Reviews;
+export default VinylCollection;

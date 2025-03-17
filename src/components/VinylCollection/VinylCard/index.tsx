@@ -2,7 +2,7 @@ import { useState } from "react";
 import NextLink from "next/link";
 import { Flex, Text, Image, Link, Skeleton } from "@chakra-ui/react";
 
-import AudioPlayer from "../../../Layout/AudioPlayer";
+import AudioPlayer from "../../Layout/AudioPlayer";
 
 const styles = {
   card: {
@@ -30,7 +30,7 @@ const styles = {
     h: "250px",
     borderRadius: "8px",
   },
-  reviewDetails: {
+  vinylDetails: {
     alignItems: "center",
     gap: "12px",
   },
@@ -50,7 +50,7 @@ const styles = {
   },
 };
 
-function ReviewCard({
+function VinylCard({
   loading,
   img,
   recordName,
@@ -92,7 +92,7 @@ function ReviewCard({
                 h="250px"
                 objectFit="cover"
                 src={img}
-                alt="review img"
+                alt="vinyl img"
                 //   _hover={{
                 //     transform: "scale(1.2)",
                 //     transition: "transform 0.3s ease-in-out",
@@ -101,7 +101,7 @@ function ReviewCard({
             )}
           </Flex>
 
-          <Flex {...styles.reviewDetails} direction="column">
+          <Flex {...styles.vinylDetails} direction="column">
             <Text {...styles.recordName}>{artistName}</Text>
             <Text {...styles.year}>{year}</Text>
           </Flex>
@@ -119,7 +119,7 @@ function ReviewCard({
             h="100%"
             objectFit="cover"
             src={img}
-            alt="review img"
+            alt="vinyl img"
             _hover={{
               transform: "scale(1.2)",
               transition: "transform 0.3s ease-in-out",
@@ -133,4 +133,4 @@ function ReviewCard({
   );
 }
 
-export default ReviewCard;
+export default VinylCard;

@@ -139,7 +139,7 @@ function Reviews() {
         </Flex>
       </SlideFade>
 
-      <Link {...styles.seeAll} as={NextLink} href={routes.REVIEWS}>
+      <Link {...styles.seeAll} as={NextLink} href={routes.HOME}>
         <Text>{"All Reviews"}</Text>
       </Link>
     </Flex>
