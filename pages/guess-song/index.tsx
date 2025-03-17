@@ -14,11 +14,14 @@ function GuessSong() {
 
     console.log("tracks: ", tracks);
 
+    const queryName = "Shape of You";
+
     const track = await SpotifyService.getTrack({
-      trackId: "0y2DyTS7hhrR9j5LAgTldO",
+      query: queryName,
     });
 
     console.log("track: ", track);
+    console.log("track preview_url: ", track?.preview_url);
   };
 
   useEffect(() => {

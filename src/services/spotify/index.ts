@@ -31,13 +31,21 @@ export class SpotifyService {
     return data;
   }
 
-  static async getTrack(params: { trackId: string }) {
-    const { trackId } = params;
+  static async getTrack(params: { query: string }) {
+    const { query } = params;
 
     const data = await this.fetchWebApi({
-      endpoint: `tracks?ids=${trackId}}`,
+      endpoint: `search?q=${encodeURIComponent(query)}&type=track&limit=1`,
     });
 
-    return data;
+    const trackId = data?.tracks?.items[0]?.id;
+
+    if (!trackId) return;
+
+    const track = await this.fetchWebApi({
+      endpoint: `tracks/${trackId}`,
+    });
+
+    return track;
   }
 }
