@@ -1,5 +1,8 @@
+import { useState } from "react";
 import NextLink from "next/link";
 import { Flex, Text, Image, Link, Skeleton } from "@chakra-ui/react";
+
+import AudioPlayer from "../../../Layout/AudioPlayer";
 
 const styles = {
   card: {
@@ -10,8 +13,6 @@ const styles = {
     bg: "white",
     borderRadius: "24px",
     boxShadow: "md",
-    p: "20px",
-    gap: "12px",
     _hover: {
       transform: "scale(1.05)",
       transition: "transform 0.3s ease-in-out",
@@ -55,39 +56,77 @@ function ReviewCard({
   recordName,
   artistName,
   year,
+  preview_url,
 }: {
   loading: boolean;
   img: string;
   recordName: string;
   artistName: string;
   year: string;
+  preview_url: string;
 }) {
+  const [isHover, setIsHover] = useState(false);
+
   return (
     <Link {...styles.cardLink} as={NextLink} href={"/"}>
-      <Flex {...styles.card} direction="column">
-        <Text {...styles.recordName}>{recordName}</Text>
+      <Flex
+        direction="column"
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+      >
+        <Flex
+          display={isHover ? "none" : "flex"}
+          {...styles.card}
+          p="20px"
+          gap="12px"
+          direction="column"
+        >
+          <Text {...styles.recordName}>{recordName}</Text>
 
-        <Flex {...styles.image} overflow="hidden">
-          {loading && <Skeleton {...styles.image} bg="magnolia" />}
+          <Flex {...styles.image} overflow="hidden">
+            {loading && <Skeleton {...styles.image} bg="magnolia" />}
 
-          {!loading && (
-            <Image
-              w="250px"
-              h="250px"
-              objectFit="cover"
-              src={img}
-              alt="review img"
-              //   _hover={{
-              //     transform: "scale(1.2)",
-              //     transition: "transform 0.3s ease-in-out",
-              //   }}
-            />
-          )}
+            {!loading && (
+              <Image
+                w="250px"
+                h="250px"
+                objectFit="cover"
+                src={img}
+                alt="review img"
+                //   _hover={{
+                //     transform: "scale(1.2)",
+                //     transition: "transform 0.3s ease-in-out",
+                //   }}
+              />
+            )}
+          </Flex>
+
+          <Flex {...styles.reviewDetails} direction="column">
+            <Text {...styles.recordName}>{artistName}</Text>
+            <Text {...styles.year}>{year}</Text>
+          </Flex>
         </Flex>
 
-        <Flex {...styles.reviewDetails} direction="column">
-          <Text {...styles.recordName}>{artistName}</Text>
-          <Text {...styles.year}>{year}</Text>
+        <Flex
+          display={isHover ? "flex" : "none"}
+          {...styles.card}
+          direction="column"
+          overflow="hidden"
+          position="relative"
+        >
+          <Image
+            w="100%"
+            h="100%"
+            objectFit="cover"
+            src={img}
+            alt="review img"
+            _hover={{
+              transform: "scale(1.2)",
+              transition: "transform 0.3s ease-in-out",
+            }}
+          />
+
+          <AudioPlayer isPlaying={isHover} preview_url={preview_url} />
         </Flex>
       </Flex>
     </Link>
