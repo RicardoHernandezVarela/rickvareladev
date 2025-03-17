@@ -27,7 +27,7 @@ const menuOptions = {
       {
         text: "vinyl collection",
         icon: "PiVinylRecordDuotone",
-        route: routes.HOME,
+        route: routes.VINYL_COLLECTION,
       },
       {
         text: "reviews",
