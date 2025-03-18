@@ -1,6 +1,10 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Spinner, Text } from "@chakra-ui/react";
 
 import VinylCard from "@/src/components/VinylCollection/VinylCard";
+
+import useSanityData from "@/src/hooks/useSanityData";
+
+import requestStatus from "@/src/constants/requestStatus";
 
 const styles = {
   mainContainer: {
@@ -53,24 +57,39 @@ const vinylList = [
 ];
 
 function VinylCollection() {
+  const { data, status } = useSanityData({ dataItem: "vinyl" });
+
   return (
     <Flex {...styles.mainContainer} overflowY="scroll" flexWrap="wrap">
-      {vinylList?.map((vinyl: Record<string, string>, index: number) => {
-        return (
-          <VinylCard
-            key={index}
-            loading={false}
-            img={vinyl?.img}
-            recordName={vinyl?.recordName}
-            artistName={vinyl?.artistName}
-            year={vinyl?.year}
-            preview_url={vinyl?.preview_url}
-          />
-        );
-      })}
+      {(status === requestStatus.IDLE ||
+        status === requestStatus.IS_LOADING) && (
+        <Spinner size="xl" color="bleu" thickness="4px" speed="0.65s" />
+      )}
 
-      <Flex {...styles.blankCard} />
-      <Flex {...styles.blankCard} />
+      {status === requestStatus.HAS_SUCCESS && data?.length && (
+        <>
+          {data?.map((vinyl: Record<string, any>, index: number) => {
+            return (
+              <VinylCard
+                key={index}
+                loading={false}
+                img={vinyl?.image?.url}
+                recordName={vinyl?.name}
+                artistName={vinyl?.artist}
+                year={vinyl?.year}
+                preview_url={vinyl?.preview_url}
+              />
+            );
+          })}
+
+          <Flex {...styles.blankCard} />
+          <Flex {...styles.blankCard} />
+        </>
+      )}
+
+      {status === requestStatus.HAS_ERROR && (
+        <Text>There are no items in my collection.</Text>
+      )}
     </Flex>
   );
 }

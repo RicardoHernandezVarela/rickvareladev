@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import useSanityData from "@/src/hooks/useSanityData";
+
 const titleOptions = ["Prev Review", "Latest Review", "Next Review"];
 
 const reviewsList: any = [
@@ -21,6 +23,8 @@ const reviewsList: any = [
 ];
 
 function useReviews() {
+  const { data, status } = useSanityData({ dataItem: "vinyl" });
+
   const [cardState, setCardState] = useState({
     index: 1,
     title: titleOptions[1],
@@ -29,7 +33,7 @@ function useReviews() {
 
   const [toTheRight, setToTheRight] = useState(false);
 
-  const [selectedReview, setSelectedReview] = useState(reviewsList[1]);
+  const [selectedReview, setSelectedReview] = useState(data[1]);
 
   const handleCardChange = (params: { next: boolean }) => {
     const { next } = params;
@@ -45,7 +49,7 @@ function useReviews() {
     const realNewIndex = Math.min(Math.max(0, newIndex), 2);
 
     setTimeout(() => {
-      setSelectedReview(reviewsList[realNewIndex]);
+      setSelectedReview(data[realNewIndex]);
 
       setCardState({
         index: realNewIndex,
