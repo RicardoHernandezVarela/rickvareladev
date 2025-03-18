@@ -1,25 +1,30 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import useExperienceStore from "../store/useExperienceStore";
+import useSanityDataStore from "../store/useSanityDataStore";
+
 import requestStatus from "../constants/requestStatus";
 
 function useWorkExperienceItemPage() {
   const router = useRouter();
 
-  const experience = useExperienceStore((state: any) => state.experience);
+  const sanityData = useSanityDataStore((state: any) => state.sanityData);
 
   const [status, setStatus] = useState(requestStatus.IDLE);
   const [data, setData] = useState<any>(undefined);
 
   const getData = () => {
-    if (!router?.query?.rev || !experience) return;
+    const experienceSanityData = sanityData["work-experience"];
+
+    if (!router?.query?.rev || !experienceSanityData) return;
 
     setStatus(requestStatus.IS_LOADING);
 
     const _rev = router?.query?.rev[0];
 
-    const pageData = experience[_rev];
+    const pageData = experienceSanityData.find(
+      (experience: any) => experience?._rev === _rev
+    );
 
     setData(pageData);
     setStatus(pageData ? requestStatus.HAS_SUCCESS : requestStatus.HAS_ERROR);
