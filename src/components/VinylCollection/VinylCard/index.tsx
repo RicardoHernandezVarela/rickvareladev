@@ -81,7 +81,7 @@ function VinylCard({
           gap="12px"
           direction="column"
         >
-          <Text {...styles.recordName} textTransform="capitalize">
+          <Text {...styles.recordName} textTransform="capitalize" noOfLines={1}>
             {recordName}
           </Text>
 
@@ -104,7 +104,11 @@ function VinylCard({
           </Flex>
 
           <Flex {...styles.vinylDetails} direction="column">
-            <Text {...styles.recordName} textTransform="capitalize">
+            <Text
+              {...styles.recordName}
+              textTransform="capitalize"
+              noOfLines={1}
+            >
               {artistName}
             </Text>
             <Text {...styles.year}>{year}</Text>
