@@ -4,24 +4,6 @@ import useSanityData from "@/src/hooks/useSanityData";
 
 const titleOptions = ["Prev Review", "Latest Review", "Next Review"];
 
-const reviewsList: any = [
-  {
-    img: "https://upload.wikimedia.org/wikipedia/en/2/2c/Stevemcqueen.jpg",
-    recordName: "Steve McQueen",
-    artistName: "Prefab Sprout",
-  },
-  {
-    img: "https://i.ytimg.com/vi/K8IXWzKcJEQ/hqdefault.jpg",
-    recordName: "Magnolia Electric Co.",
-    artistName: "Songs:Ohia",
-  },
-  {
-    img: "https://upload.wikimedia.org/wikipedia/en/e/eb/Nocturne_%28Wild_Nothing_album_-_cover_art%29.jpg",
-    recordName: "Nocturne",
-    artistName: "Wild Nothing",
-  },
-];
-
 function useReviews() {
   const { data, status } = useSanityData({ dataItem: "vinyl" });
 
@@ -33,7 +15,13 @@ function useReviews() {
 
   const [toTheRight, setToTheRight] = useState(false);
 
-  const [selectedReview, setSelectedReview] = useState(data[1]);
+  const [selectedReview, setSelectedReview] = useState(
+    data?.length ? data[1] : {}
+  );
+
+  useEffect(() => {
+    setSelectedReview(data?.length ? data[1] : {});
+  }, [data]);
 
   const handleCardChange = (params: { next: boolean }) => {
     const { next } = params;
@@ -59,7 +47,14 @@ function useReviews() {
     }, 510);
   };
 
-  return { cardState, toTheRight, handleCardChange, selectedReview };
+  return {
+    cardState,
+    toTheRight,
+    handleCardChange,
+    selectedReview,
+    data,
+    status,
+  };
 }
 
 export default useReviews;
