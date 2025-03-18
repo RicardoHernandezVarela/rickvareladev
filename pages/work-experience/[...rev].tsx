@@ -25,6 +25,8 @@ function WorkExperienceItemPage() {
           )}
         </Flex>
       )}
+
+      {status === requestStatus.HAS_ERROR && <Text>There are no details.</Text>}
     </Flex>
   );
 }
