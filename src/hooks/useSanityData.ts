@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
-import useSanityDataStore from "../../../../store/useSanityDataStore";
+import useSanityDataStore from "../store/useSanityDataStore";
 
-import requestStatus from "../../../../constants/requestStatus";
+import requestStatus from "../constants/requestStatus";
 
-function useWorkExperience() {
+const sanityItems: Record<string, string> = {
+  "work-experience": "/api/get-work-experience",
+  vinyl: "/api/sanity/get-vinyls",
+};
+
+function useSanityData(props: { dataItem: string }) {
+  const { dataItem } = props;
+
   const sanityData = useSanityDataStore((state: any) => state.sanityData);
   const insertSanityData = useSanityDataStore(
     (state: any) => state.insertSanityData
@@ -15,8 +22,7 @@ function useWorkExperience() {
   const getData = async () => {
     setStatus(requestStatus.IS_LOADING);
 
-    const dataId = "work-experience";
-    const storedData = sanityData[dataId];
+    const storedData = sanityData[dataItem];
 
     if (storedData) {
       setData(storedData);
@@ -28,7 +34,7 @@ function useWorkExperience() {
       return;
     }
 
-    const response = await fetch("/api/get-work-experience");
+    const response = await fetch(sanityItems[dataItem]);
 
     const responseJSON = await response?.json();
 
@@ -38,7 +44,7 @@ function useWorkExperience() {
 
     /* STORE RESULT */
     if (workExpData) {
-      insertSanityData(dataId, workExpData);
+      insertSanityData(dataItem, workExpData);
     }
 
     setStatus(
@@ -56,4 +62,4 @@ function useWorkExperience() {
   };
 }
 
-export default useWorkExperience;
+export default useSanityData;

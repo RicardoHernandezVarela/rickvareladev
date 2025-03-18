@@ -124,7 +124,7 @@ function Reviews() {
                 w="250px"
                 h="250px"
                 objectFit="cover"
-                src={selectedReview.img}
+                src={selectedReview?.image?.url}
                 alt="review img"
               />
             )}
@@ -132,9 +132,9 @@ function Reviews() {
 
           <Flex {...styles.reviewDetails} direction="column">
             <Link {...styles.recordName} as={NextLink} href={"/"}>
-              <Text>{selectedReview.recordName}</Text>
+              <Text>{selectedReview?.name}</Text>
             </Link>
-            <Text {...styles.artistName}>{selectedReview.artistName}</Text>
+            <Text {...styles.artistName}>{selectedReview?.artist}</Text>
           </Flex>
         </Flex>
       </SlideFade>

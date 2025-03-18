@@ -81,7 +81,9 @@ function VinylCard({
           gap="12px"
           direction="column"
         >
-          <Text {...styles.recordName}>{recordName}</Text>
+          <Text {...styles.recordName} textTransform="capitalize">
+            {recordName}
+          </Text>
 
           <Flex {...styles.image} overflow="hidden">
             {loading && <Skeleton {...styles.image} bg="magnolia" />}
@@ -102,7 +104,9 @@ function VinylCard({
           </Flex>
 
           <Flex {...styles.vinylDetails} direction="column">
-            <Text {...styles.recordName}>{artistName}</Text>
+            <Text {...styles.recordName} textTransform="capitalize">
+              {artistName}
+            </Text>
             <Text {...styles.year}>{year}</Text>
           </Flex>
         </Flex>
