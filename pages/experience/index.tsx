@@ -2,6 +2,8 @@ import { Flex } from "@chakra-ui/react";
 
 import BlockCards from "@/src/sections/BlockCards";
 
+import useWorkExperience from "@/src/components/Home/WorkExperience/useWorkExperience";
+
 const styles = {
   mainContainer: {
     w: "100%",
@@ -12,9 +14,11 @@ const styles = {
 };
 
 function Experience() {
+  const { status, data } = useWorkExperience();
+
   return (
     <Flex {...styles.mainContainer} direction="column" overflowY="scroll">
-      <BlockCards />
+      <BlockCards status={status} data={data} />
     </Flex>
   );
 }
