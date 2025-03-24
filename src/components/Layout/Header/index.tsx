@@ -64,7 +64,7 @@ function Header(props: { onOpen: () => void }) {
   const router = useRouter();
   const pathname = router?.pathname;
 
-  console.log("pathname: ", pathname);
+  //console.log("pathname: ", pathname);
 
   const breadCrumbData = breadCrumbsData[pathname];
 
@@ -103,7 +103,7 @@ function Header(props: { onOpen: () => void }) {
       <Flex {...styles.avatarContainer}>
         <Avatar src="https://bit.ly/dan-abramov" />
 
-        <Box ml="3">
+        <Box ml={{ sm: "0", lg: "3" }}>
           <Text
             color="eerieBlack"
             fontWeight="bold"

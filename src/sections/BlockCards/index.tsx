@@ -3,6 +3,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import BlockCard from "@/src/components/Layout/BlockCard";
 
 import LoadingSpinner from "@/src/components/Layout/LoadingSpinner";
+import SelectedCard from "./SelectedCar";
 
 import useBlockCards from "@/src/sections/BlockCards/useBlockCards";
 
@@ -24,20 +25,8 @@ const styles = {
     boxShadow: "md",
     gap: "20px",
   },
-  selectedCardContainer: {
-    display: { sm: "none", lg: "flex" },
-    w: "450px",
-    minH: "450px",
-    borderRadius: "24px",
-    border: "1px",
-    borderColor: "lavender",
-    bgPosition: "center",
-    bgRepeat: "no-repeat",
-    bgSize: "auto",
-    p: "10px",
-  },
   cardsContainer: {
-    h: "450px",
+    h: { sm: "80vh", md: "450px" },
     gap: "16px",
     pb: "10px",
   },
@@ -46,7 +35,7 @@ const styles = {
 function BlockCards(props: { status: string; data: Record<string, any>[] }) {
   const { status, data } = props;
 
-  const { selectedCard, setSelectedCar } = useBlockCards({
+  const { selectedCard, setSelectedCard } = useBlockCards({
     dafaultSelectedCard: data[0],
   });
 
@@ -59,11 +48,9 @@ function BlockCards(props: { status: string; data: Record<string, any>[] }) {
 
       {status === requestStatus.HAS_SUCCESS && (
         <>
-          <Flex
-            {...styles.selectedCardContainer}
-            bgImage={selectedCard?.image?.url}
-            bgColor={selectedCard?.background}
-          ></Flex>
+          <SelectedCard
+            selectedCard={selectedCard?.image ? selectedCard : data[0]}
+          />
 
           <Flex
             {...styles.cardsContainer}
@@ -77,7 +64,7 @@ function BlockCards(props: { status: string; data: Record<string, any>[] }) {
                 <BlockCard
                   key={index}
                   data={item}
-                  setSelectedCar={() => setSelectedCar(item)}
+                  setSelectedCard={() => setSelectedCard(item)}
                 />
               );
             })}
