@@ -7,6 +7,7 @@ const styles = {
     w: "auto",
     maxW: "520px",
     h: "auto",
+    alignItems: "center",
     gap: "16px",
     cursor: "pointer",
   },
@@ -36,11 +37,18 @@ const styles = {
   },
 };
 
-function BlockCard(props: { data: Record<string, any> }) {
-  const { data } = props;
+function BlockCard(props: {
+  data: Record<string, any>;
+  setSelectedCar: () => void;
+}) {
+  const { data, setSelectedCar } = props;
 
   return (
-    <Flex {...styles.card}>
+    <Flex
+      {...styles.card}
+      direction={{ sm: "column", md: "row" }}
+      onClick={setSelectedCar}
+    >
       <Image
         objectFit="cover"
         src={data?.image?.url}
@@ -64,10 +72,7 @@ function BlockCard(props: { data: Record<string, any> }) {
         <Text {...styles.title}>{data?.place}</Text>
 
         <Text {...styles.text} noOfLines={4}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat
+          {data?.summary}
         </Text>
       </Flex>
     </Flex>
