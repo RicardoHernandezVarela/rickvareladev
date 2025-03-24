@@ -13,7 +13,7 @@ const styles = {
   },
   card: {
     w: "160px",
-    h: "205px",
+    //h: "225px",
     alignItems: "center",
     px: "14px",
     pt: "14px",
@@ -37,7 +37,7 @@ const styles = {
     letterSpacing: "0.5px",
     color: "eerieBlack",
     mt: "12px",
-    mb: "7px",
+    mb: "10px",
   },
   positionText: {
     fontSize: "12px",
@@ -48,6 +48,7 @@ const styles = {
     mb: "7px",
   },
   dateText: {
+    h: "20px",
     fontSize: "10px",
     fontWeight: "600",
     lineHeight: "1",
@@ -99,13 +100,13 @@ function WorkExperienceCard(props: {
             />
           )}
         </Flex>
-        <Text {...styles.placeText} textAlign="center" noOfLines={1}>
+        <Text {...styles.placeText} textAlign="center">
           {place}
         </Text>
-        <Text {...styles.positionText} textAlign="center" noOfLines={1}>
+        <Text {...styles.positionText} textAlign="center">
           {position}
         </Text>
-        <Text {...styles.dateText} textAlign="center" noOfLines={1}>
+        <Text {...styles.dateText} textAlign="center">
           {dates}
         </Text>
       </Flex>

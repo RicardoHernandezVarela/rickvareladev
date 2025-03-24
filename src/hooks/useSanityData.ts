@@ -6,6 +6,7 @@ import requestStatus from "../constants/requestStatus";
 const sanityItems: Record<string, string> = {
   "work-experience": "/api/get-work-experience",
   vinyl: "/api/sanity/get-vinyls",
+  project: "/api/sanity/get-projects",
 };
 
 function useSanityData(props: { dataItem: string }) {

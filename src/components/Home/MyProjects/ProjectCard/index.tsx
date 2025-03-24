@@ -16,8 +16,9 @@ const styles = {
     borderColor: "vistaBlue",
   },
   textContainer: {
+    w: "100%",
     ml: { base: "12px", lg: "24px" },
-    gap: "6px",
+    gap: "10px",
   },
   link: {
     _hover: {
@@ -33,6 +34,7 @@ const styles = {
     color: "eerieBlack",
   },
   tools: {
+    maxW: "90%",
     fontSize: { base: "12px", lg: "14px" },
     fontWeight: "500",
     lineHeight: "16px",
@@ -60,13 +62,15 @@ const styles = {
   },
 };
 
-function ProjectCard() {
+function ProjectCard(props: { project: Record<string, any> }) {
+  const { project } = props;
+
   return (
     <Flex {...styles.card} position="relative">
       <Image
-        boxSize="100px"
+        boxSize="98px"
         objectFit="cover"
-        src="https://picsum.photos/200"
+        src={project?.image?.url}
         alt="project img"
         borderTopLeftRadius="16px"
         borderBottomLeftRadius="16px"
@@ -74,18 +78,16 @@ function ProjectCard() {
 
       <Flex {...styles.textContainer} direction="column">
         <Link href={"/"} as={NextLink} {...styles.link}>
-          <Text {...styles.projectName}>{"Lesath"}</Text>
+          <Text {...styles.projectName}>{project?.name}</Text>
         </Link>
-        <Text {...styles.tools}>
-          {"Python, Django, HTML, JavaScript, CSS, Arduino"}
-        </Text>
+        <Text {...styles.tools}>{project?.stack}</Text>
       </Flex>
 
       {/* SITE */}
       <Link
         {...styles.repoLink}
         isExternal
-        href={"https://github.com/RicardoHernandezVarela/Lesath-Biosignals"}
+        href={project?.site}
         position="absolute"
         right="100px"
         bg="magnolia"
@@ -97,7 +99,7 @@ function ProjectCard() {
       <Link
         {...styles.repoLink}
         isExternal
-        href={"https://github.com/RicardoHernandezVarela/Lesath-Biosignals"}
+        href={project?.repo}
         position="absolute"
         right="40px"
         bg="magnolia"
