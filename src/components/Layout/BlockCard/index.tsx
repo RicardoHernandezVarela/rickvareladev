@@ -39,21 +39,22 @@ const styles = {
 
 function BlockCard(props: {
   data: Record<string, any>;
-  setSelectedCar: () => void;
+  setSelectedCard: () => void;
 }) {
-  const { data, setSelectedCar } = props;
+  const { data, setSelectedCard } = props;
 
   return (
     <Flex
       {...styles.card}
       direction={{ sm: "column", md: "row" }}
-      onClick={setSelectedCar}
+      onClick={setSelectedCard}
     >
       <Image
         objectFit="cover"
         src={data?.image?.url}
         alt="work img"
         {...styles.image}
+        backgroundColor={data?.background || "transparent"}
       />
 
       <Flex {...styles.textContainer} direction="column">

@@ -102,7 +102,7 @@ function WorkExperienceCard(props: {
         <Text {...styles.placeText} textAlign="center" noOfLines={1}>
           {place}
         </Text>
-        <Text {...styles.positionText} textAlign="center">
+        <Text {...styles.positionText} textAlign="center" noOfLines={1}>
           {position}
         </Text>
         <Text {...styles.dateText} textAlign="center" noOfLines={1}>
