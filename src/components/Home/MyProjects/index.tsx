@@ -2,8 +2,12 @@ import NextLink from "next/link";
 import { Flex, Text, Link } from "@chakra-ui/react";
 
 import ProjectCard from "./ProjectCard";
+import LoadingSpinner from "../../Layout/LoadingSpinner";
+
+import useSanityData from "@/src/hooks/useSanityData";
 
 import scrollBarStyles from "@/src/constants/scrollBarStyles";
+import requestStatus from "@/src/constants/requestStatus";
 
 const styles = {
   myProjectsContainer: {
@@ -41,6 +45,7 @@ const styles = {
   },
   projectsCardsContainer: {
     w: "100%",
+    minH: "350px",
     alignItems: "center",
   },
   projectsCards: {
@@ -52,6 +57,8 @@ const styles = {
 };
 
 function MyProjects() {
+  const { data, status } = useSanityData({ dataItem: "project" });
+
   return (
     <Flex {...styles.myProjectsContainer} direction="column">
       <Flex {...styles.titleContainer}>
@@ -68,17 +75,21 @@ function MyProjects() {
         overflowY="scroll"
         css={scrollBarStyles}
       >
-        <Flex {...styles.projectsCards} direction="column">
-          <ProjectCard />
+        <LoadingSpinner status={status} />
 
-          <ProjectCard />
+        {status === requestStatus.HAS_SUCCESS && (
+          <Flex {...styles.projectsCards} direction="column">
+            {data?.map((project: Record<string, any>, index: number) => {
+              return project?.pinned ? (
+                <ProjectCard key={index} project={project} />
+              ) : null;
+            })}
+          </Flex>
+        )}
 
-          <ProjectCard />
-
-          <ProjectCard />
-
-          <ProjectCard />
-        </Flex>
+        {status === requestStatus.HAS_ERROR && (
+          <Text>There are no projects.</Text>
+        )}
       </Flex>
     </Flex>
   );

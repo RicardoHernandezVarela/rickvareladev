@@ -11,7 +11,7 @@ const styles = {
   workExperienceContainer: {
     w: { base: "87vw", lg: "72vw", xl: "76.5vw" },
     maxW: "1650px",
-    h: "317px",
+    h: "340px",
     mt: "8px",
     mb: "16px",
     p: "24px",

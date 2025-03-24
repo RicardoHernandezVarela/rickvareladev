@@ -101,7 +101,7 @@ function Header(props: { onOpen: () => void }) {
 
       {/* AVATAR */}
       <Flex {...styles.avatarContainer}>
-        <Avatar src="https://bit.ly/dan-abramov" />
+        <Avatar src="https://media.licdn.com/dms/image/v2/D4E03AQHNNoPXMRlCfg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1671670284871?e=1748476800&v=beta&t=CKkIpQJxJOsokxYnqeggm54g0tfLmZri7CeCfdU-2Zw" />
 
         <Box ml={{ sm: "0", lg: "3" }}>
           <Text
@@ -116,7 +116,7 @@ function Header(props: { onOpen: () => void }) {
             fontSize="sm"
             textAlign={{ sm: "center", md: "left" }}
           >
-            Frontend Developer
+            Front-end Developer
           </Text>
         </Box>
 
