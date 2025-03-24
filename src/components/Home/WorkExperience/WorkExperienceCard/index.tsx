@@ -61,11 +61,21 @@ function WorkExperienceCard(props: {
   position: string;
   dates: string;
   image: { url: string };
+  background?: string;
   _createdAt: string;
   _rev: string;
   details?: any;
 }) {
-  const { place, position, dates, image, details, _createdAt, _rev } = props;
+  const {
+    place,
+    position,
+    dates,
+    image,
+    background,
+    details,
+    _createdAt,
+    _rev,
+  } = props;
 
   return (
     <Link
@@ -74,7 +84,11 @@ function WorkExperienceCard(props: {
       {...styles.link}
     >
       <Flex {...styles.card} direction="column">
-        <Flex {...styles.cardImage} overflow="hidden">
+        <Flex
+          {...styles.cardImage}
+          backgroundColor={background || "transparent"}
+          overflow="hidden"
+        >
           {image?.url && (
             <Image
               src={image?.url}
@@ -85,13 +99,13 @@ function WorkExperienceCard(props: {
             />
           )}
         </Flex>
-        <Text {...styles.placeText} textAlign="center">
+        <Text {...styles.placeText} textAlign="center" noOfLines={1}>
           {place}
         </Text>
         <Text {...styles.positionText} textAlign="center">
           {position}
         </Text>
-        <Text {...styles.dateText} textAlign="center">
+        <Text {...styles.dateText} textAlign="center" noOfLines={1}>
           {dates}
         </Text>
       </Flex>

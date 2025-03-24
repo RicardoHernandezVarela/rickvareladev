@@ -1,43 +1,78 @@
-import { Flex, Text, Image } from "@chakra-ui/react";
+import { Flex, Text, Image, border } from "@chakra-ui/react";
 
 import { FaCalendar, FaBriefcase } from "react-icons/fa";
 
 const styles = {
   card: {
-    w: "320px",
-    h: "160px",
+    w: "auto",
+    maxW: "520px",
+    h: "auto",
+    alignItems: "center",
+    gap: "16px",
+    cursor: "pointer",
+  },
+  image: {
+    w: "135px",
+    h: "135px",
+    minW: "135px",
+    minH: "135px",
     border: "1px",
+    borderColor: "lavender",
+    borderRadius: "6px",
+  },
+  textContainer: {
+    gap: "8px",
+    py: "5px",
+  },
+  textHeader: {
+    fontSize: "10px",
+    gap: "8px",
+  },
+  title: {
+    fontSize: "15px",
+    fontWeight: "bold",
+  },
+  text: {
+    fontSize: "12px",
   },
 };
 
-function BlockCard() {
+function BlockCard(props: {
+  data: Record<string, any>;
+  setSelectedCar: () => void;
+}) {
+  const { data, setSelectedCar } = props;
+
   return (
-    <Flex {...styles.card}>
+    <Flex
+      {...styles.card}
+      direction={{ sm: "column", md: "row" }}
+      onClick={setSelectedCar}
+    >
       <Image
         objectFit="cover"
-        src="https://picsum.photos/120/110"
+        src={data?.image?.url}
         alt="work img"
+        {...styles.image}
       />
 
-      <Flex direction="column">
-        <Flex>
-          <Flex>
+      <Flex {...styles.textContainer} direction="column">
+        <Flex {...styles.textHeader}>
+          <Flex alignItems="center" gap="5px">
             <FaCalendar />
-            <Text>Apr 8, 2023</Text>
+            <Text>{data?.dates}</Text>
           </Flex>
-          <Flex>
+
+          <Flex alignItems="center" gap="5px">
             <FaBriefcase />
-            <Text>Erol Ahmed</Text>
+            <Text>{data?.position}</Text>
           </Flex>
         </Flex>
 
-        <Text>Just greatest Article</Text>
+        <Text {...styles.title}>{data?.place}</Text>
 
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat [...]
+        <Text {...styles.text} noOfLines={4}>
+          {data?.summary}
         </Text>
       </Flex>
     </Flex>

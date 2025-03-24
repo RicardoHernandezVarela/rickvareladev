@@ -60,6 +60,7 @@ function WorkExperience() {
                 position={item?.position}
                 dates={item?.dates}
                 image={item?.image}
+                background={item?.background}
                 details={item?.details}
                 _createdAt={item?._createdAt}
                 _rev={item?._rev}

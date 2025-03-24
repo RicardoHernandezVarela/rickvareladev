@@ -76,6 +76,7 @@ function Header(props: { onOpen: () => void }) {
         display="flex"
         alignItems="center"
         separator={<IoIosArrowForward style={styles.separator} />}
+        mt={{ sm: "3px", lg: "0px" }}
       >
         <BreadcrumbItem {...styles.primaryBreadcrumbItem}>
           <Link
@@ -101,11 +102,20 @@ function Header(props: { onOpen: () => void }) {
       {/* AVATAR */}
       <Flex {...styles.avatarContainer}>
         <Avatar src="https://bit.ly/dan-abramov" />
+
         <Box ml="3">
-          <Text color="eerieBlack" fontWeight="bold">
+          <Text
+            color="eerieBlack"
+            fontWeight="bold"
+            textAlign={{ sm: "center", lg: "left" }}
+          >
             Rick Varela
           </Text>
-          <Text color="eerieBlack" fontSize="sm">
+          <Text
+            color="eerieBlack"
+            fontSize="sm"
+            textAlign={{ sm: "center", md: "left" }}
+          >
             Frontend Developer
           </Text>
         </Box>
