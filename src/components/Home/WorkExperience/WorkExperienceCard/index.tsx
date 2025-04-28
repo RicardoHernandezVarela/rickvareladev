@@ -1,6 +1,5 @@
 import NextLink from "next/link";
-import { Flex, Text, Link } from "@chakra-ui/react";
-import Image from "next/image";
+import { Flex, Text, Link, Image } from "@chakra-ui/react";
 
 import routes from "../../../../constants/routes";
 
@@ -25,7 +24,8 @@ const styles = {
   cardImage: {
     w: "120px",
     h: "110px",
-    //bg: "bleu",
+    alignItems: "center",
+    justifyContent: "center",
     border: "1px",
     borderColor: "bleu",
     borderRadius: "12px",
@@ -62,6 +62,7 @@ function WorkExperienceCard(props: {
   position: string;
   dates: string;
   image: { url: string };
+  isNotRoundedInCar?: boolean;
   background?: string;
   _createdAt: string;
   _rev: string;
@@ -72,6 +73,7 @@ function WorkExperienceCard(props: {
     position,
     dates,
     image,
+    isNotRoundedInCar,
     background,
     details,
     _createdAt,
@@ -94,9 +96,10 @@ function WorkExperienceCard(props: {
             <Image
               src={image?.url}
               alt="we-img"
-              width={800}
-              height={600}
-              sizes="(max-width: 768px) 100vw, 800px"
+              width="80px"
+              height="80px"
+              borderRadius={isNotRoundedInCar ? "0" : "full"}
+              //sizes="(max-width: 768px) 100vw, 800px"
             />
           )}
         </Flex>
