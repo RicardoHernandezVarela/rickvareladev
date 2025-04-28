@@ -12,7 +12,7 @@ const styles = {
     borderColor: "lavender",
     bgPosition: "center",
     bgRepeat: "no-repeat",
-    bgSize: "auto",
+    bgSize: "105px",
     p: "25px",
     justifyContent: "space-between",
   },
@@ -63,7 +63,7 @@ function SelectedCard(props: { selectedCard: Record<string, any> }) {
         <Text {...styles.position} textAlign="center">{selectedCard?.position}</Text>
       </Flex>
 
-      <Flex {...styles.bottomContainer} direction="column">
+      <Flex {...styles.bottomContainer} direction="column" color={selectedCard?.color || "white"}>
         <Text {...styles.title}>{selectedCard?.place}</Text>
         <Text {...styles.summary}>{selectedCard?.summary}</Text>
 

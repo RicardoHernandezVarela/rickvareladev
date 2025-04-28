@@ -11,14 +11,20 @@ const styles = {
     gap: "16px",
     cursor: "pointer",
   },
-  image: {
+  imageContainer: {
     w: "135px",
     h: "135px",
     minW: "135px",
     minH: "135px",
+    alignItems: "center",
+    justifyContent: "center",
     border: "1px",
     borderColor: "lavender",
     borderRadius: "6px",
+  },
+  image: {
+    w: "100px",
+    h: "100px",
   },
   textContainer: {
     gap: "8px",
@@ -49,13 +55,17 @@ function BlockCard(props: {
       direction={{ sm: "column", md: "row" }}
       onClick={setSelectedCard}
     >
-      <Image
-        objectFit="cover"
-        src={data?.image?.url}
-        alt="work img"
-        {...styles.image}
+      <Flex
+        {...styles.imageContainer}
         backgroundColor={data?.background || "transparent"}
-      />
+      >
+        <Image
+          src={data?.image?.url}
+          alt="work img"
+          {...styles.image}
+          borderRadius={data?.isNotRoundedInCar ? "0" : "full"}
+        />
+      </Flex>
 
       <Flex {...styles.textContainer} direction="column">
         <Flex {...styles.textHeader}>
