@@ -1,10 +1,15 @@
 import { ReactElement, useRef } from "react";
 import { Flex, Button, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 
+import Head from "next/head";
+import { useRouter } from "next/router";
+
 import { GiCompactDisc } from "react-icons/gi";
 
 import Menu from "@/src/components/Layout/Menu";
 import Header from "../Header";
+
+import headTitles from "@/src/constants/headTitles";
 
 const styles = {
   mainContainer: {
@@ -31,30 +36,42 @@ function PageWrapper(props: { children: ReactElement }) {
 
   const contentRef = useRef();
 
-  return (
-    <Flex {...styles.mainContainer}>
-      {/* MENU */}
-      <Menu isOpen={isOpen} onClose={onClose} isDesktop={isDesktop} />
+  const router = useRouter();
+  const pathname = router?.pathname;
+  const title = headTitles[pathname] || headTitles["/"];
 
-      <Flex
-        ref={contentRef.current}
-        {...styles.contentContainer}
-        direction="column"
-        position="relative"
-      >
-        {/* MENU TRIGGER */}
-        {/* <Flex {...styles.menuButtonContainer} position="absolute">
+  return (
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content="RickDev" />
+        <meta property="og:title" content={title} />
+      </Head>
+
+      <Flex {...styles.mainContainer}>
+        {/* MENU */}
+        <Menu isOpen={isOpen} onClose={onClose} isDesktop={isDesktop} />
+
+        <Flex
+          ref={contentRef.current}
+          {...styles.contentContainer}
+          direction="column"
+          position="relative"
+        >
+          {/* MENU TRIGGER */}
+          {/* <Flex {...styles.menuButtonContainer} position="absolute">
           <Button variant="unstyled" onClick={onOpen}>
             <GiCompactDisc style={styles.menuButtonIcon} />
           </Button>
         </Flex> */}
 
-        {/* HEADER */}
-        <Header onOpen={onOpen}/>
+          {/* HEADER */}
+          <Header onOpen={onOpen} />
 
-        {children}
+          {children}
+        </Flex>
       </Flex>
-    </Flex>
+    </>
   );
 }
 
