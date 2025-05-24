@@ -44,7 +44,12 @@ function NoteCard({
   onNoteSelected: () => void;
 }) {
   return (
-    <Flex key={item?._id} {...styles.noteCard} direction="column">
+    <Flex
+      key={item?._id}
+      {...styles.noteCard}
+      direction="column"
+      position="relative"
+    >
       <Flex {...styles.image}>
         <Image
           src={"https://picsum.photos/200"}
@@ -56,11 +61,11 @@ function NoteCard({
 
       <Text textTransform="capitalize">{item?.subject}</Text>
 
-      <Text textTransform="capitalize">{item?.title}</Text>
+      <Text textTransform="capitalize" noOfLines={2}>{item?.title}</Text>
 
       <Text textTransform="capitalize">{item?.date}</Text>
 
-      <Flex>
+      <Flex position="absolute" left="16px" bottom="16px" >
         <Button variant="unstyled" {...styles.button} onClick={onNoteSelected}>
           <IoIosArrowDropright size="26px" />
         </Button>

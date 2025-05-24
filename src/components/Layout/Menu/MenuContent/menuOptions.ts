@@ -32,7 +32,7 @@ const menuOptions = {
       {
         text: "reviews",
         icon: "MdOutlineRateReview",
-        route: routes.REVIEWS,
+        route: routes.HOME,
       },
     ],
   },
