@@ -7,6 +7,7 @@ const sanityItems: Record<string, string> = {
   "work-experience": "/api/get-work-experience",
   vinyl: "/api/sanity/get-vinyls",
   project: "/api/sanity/get-projects",
+  "teaching-resources": "/api/sanity/get-teaching-resources",
 };
 
 function useSanityData(props: { dataItem: string }) {
