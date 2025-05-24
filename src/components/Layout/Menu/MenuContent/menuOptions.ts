@@ -40,9 +40,9 @@ const menuOptions = {
     title: "teaching",
     items: [
       {
-        text: "notes",
+        text: "teaching resources",
         icon: "GoCodeReview",
-        route: routes.HOME,
+        route: routes.NOTES,
       },
       {
         text: "bootcamp project",
