@@ -16,7 +16,7 @@ const styles = {
   },
   image: {
     w: "100%",
-    h: "200px",
+    h: "205px",
     alignItems: "center",
     justifyContent: "center",
     borderTopLeftRadius: "30px",
@@ -33,7 +33,6 @@ const styles = {
     p: "0",
     borderRadius: "full",
     boxShadow: "md",
-    mt: "15px",
   },
 };
 

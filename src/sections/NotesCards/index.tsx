@@ -20,12 +20,13 @@ const styles = {
     bg: "white",
     borderRadius: "24px",
     boxShadow: "md",
-    gap: "20px",
+    pt: "34px",
   },
   categoryContainer: {
     w: "100%",
     alignItems: "flex-start",
     gap: "20px",
+    pb: "30px",
   },
   categoryTag: {
     backgroundColor: "bleuDeFrance",
@@ -111,6 +112,7 @@ function NotesCards({
               <Flex
                 {...styles.categoryContent}
                 direction={{ sm: "column", md: "row" }}
+                flexWrap="wrap"
               >
                 {category?.content?.map((item: Record<string, any>) => {
                   return (
@@ -121,6 +123,9 @@ function NotesCards({
                     />
                   );
                 })}
+
+                <Flex width="280px" />
+                <Flex width="280px" />
               </Flex>
             </Flex>
           );
