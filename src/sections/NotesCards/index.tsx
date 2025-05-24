@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
-import { Button, Flex, Text, Image, useDisclosure } from "@chakra-ui/react";
+import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 
 import LoadingSpinner from "@/src/components/Layout/LoadingSpinner";
 
 import PDFviewerDialog from "./PDFviewerDialog";
 
-import { IoIosArrowDropright } from "react-icons/io";
+import NoteCard from "./NoteCard";
 
 const styles = {
   mainContainer: {
@@ -27,21 +27,18 @@ const styles = {
     alignItems: "flex-start",
     gap: "20px",
   },
-  categoryTag: {},
+  categoryTag: {
+    backgroundColor: "bleuDeFrance",
+    color: "white",
+    borderRadius: "12px",
+    p: "1px 12px 4px 12px",
+    fontSize: "13px",
+  },
   categoryContent: {
     w: "100%",
     alignItems: "center",
     justifyContent: "space-evenly",
-  },
-  noteCard: {
-    w: "280px",
-    h: "400px",
-    borderRadius: "40px",
-    border: "1px",
-    borderColor: "vistaBlue",
-    boxShadow: "lg",
-    p: "16px",
-    gap: "12px",
+    gap: { sm: "25px", md: "auto" },
   },
 };
 
@@ -106,39 +103,22 @@ function NotesCards({
               direction="column"
             >
               <Flex {...styles.categoryTag}>
-                <Text>{category?.category}</Text>
+                <Text textTransform="capitalize">
+                  {category?.category?.replace("-", " ")}
+                </Text>
               </Flex>
 
-              <Flex {...styles.categoryContent}>
+              <Flex
+                {...styles.categoryContent}
+                direction={{ sm: "column", md: "row" }}
+              >
                 {category?.content?.map((item: Record<string, any>) => {
                   return (
-                    <Flex
-                      key={item?._id}
-                      {...styles.noteCard}
-                      direction="column"
-                    >
-                      <Flex>
-                        <Image
-                          src={"https://picsum.photos/200"}
-                          alt="work img"
-                        />
-                      </Flex>
-
-                      <Text>{item?.subject}</Text>
-
-                      <Text>{item?.title}</Text>
-
-                      <Text>{item?.date}</Text>
-
-                      <Flex>
-                        <Button
-                          variant="unstyled"
-                          onClick={() => onNoteSelected({ note: item })}
-                        >
-                          <IoIosArrowDropright size="26px" />
-                        </Button>
-                      </Flex>
-                    </Flex>
+                    <NoteCard
+                      key={item._id}
+                      item={item}
+                      onNoteSelected={() => onNoteSelected({ note: item })}
+                    />
                   );
                 })}
               </Flex>
