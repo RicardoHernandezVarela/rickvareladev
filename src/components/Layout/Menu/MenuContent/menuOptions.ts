@@ -17,7 +17,7 @@ const menuOptions = {
       {
         text: "projects",
         icon: "ImLab",
-        route: routes.HOME,
+        route: routes.PROJECTS,
       },
     ],
   },
@@ -32,7 +32,7 @@ const menuOptions = {
       {
         text: "reviews",
         icon: "MdOutlineRateReview",
-        route: routes.HOME,
+        route: routes.REVIEWS,
       },
     ],
   },
@@ -47,7 +47,7 @@ const menuOptions = {
       {
         text: "bootcamp project",
         icon: "FaLaptopCode",
-        route: routes.HOME,
+        route: routes.BOOTCAMP_PROJECT,
       },
     ],
   },
