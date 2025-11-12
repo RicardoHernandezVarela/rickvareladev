@@ -6,6 +6,7 @@ const routes = {
   REVIEWS: "/reviews",
   VINYL_COLLECTION: "/vinyl-collection",
   NOTES: "/teaching-resources",
+  BOOTCAMP_PROJECT: "/bootcamp-project"
 };
 
 export default routes;
