@@ -6,8 +6,10 @@ import { Text, Heading } from "@chakra-ui/react";
 
 const styles = {
   h1: {
-    mt: "10px",
-    mb: "15px",
+    my: "10px",
+  },
+  h2: {
+    my: "10px",
   },
   normal: {
     my: "10px",
@@ -16,7 +18,16 @@ const styles = {
 
 export const components: PortableTextComponents = {
   block: {
-    h1: ({ children }) => <Heading {...styles.h1}>{children}</Heading>,
+    h1: ({ children }) => (
+      <Heading as="h1" {...styles.h1}>
+        {children}
+      </Heading>
+    ),
+    h2: ({ children }) => (
+      <Heading as="h2" {...styles.h1}>
+        {children}
+      </Heading>
+    ),
     normal: ({ children }) => <Text {...styles.normal}>{children}</Text>,
   },
   types: {
