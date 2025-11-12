@@ -1,8 +1,6 @@
 import { Flex, Text, Spinner } from "@chakra-ui/react";
 import PortableTextWrapper from "@/src/components/Layout/PortableTextWrapper";
 
-import useSanityData from "@/src/hooks/useSanityData";
-
 import requestStatus from "@/src/constants/requestStatus";
 import scrollBarStyles from "@/src/constants/scrollBarStyles";
 

@@ -45,7 +45,13 @@ const styles = {
     m: "0",
     p: "0",
   },
-  separator: { width: "16px", height: "16px", color: "#1E2122" },
+  separator: {
+    width: "16px",
+    height: "16px",
+    color: "#1E2122",
+    padding: "0",
+    marginTop: "5px",
+  },
   avatarContainer: {
     w: { base: "100%", lg: "auto" },
     alignItems: "center",
@@ -75,6 +81,7 @@ function Header(props: { onOpen: () => void }) {
         spacing="8px"
         display="flex"
         alignItems="center"
+        justifyContent="center"
         separator={<IoIosArrowForward style={styles.separator} />}
         mt={{ sm: "3px", lg: "0px" }}
       >
@@ -89,13 +96,21 @@ function Header(props: { onOpen: () => void }) {
         </BreadcrumbItem>
 
         <BreadcrumbItem {...styles.secondaryBreadcrumbItem}>
-          <Link
-            as={NextLink}
-            href={breadCrumbData?.secondaryItem?.route || "/"}
-            textTransform="capitalize"
-          >
-            {breadCrumbData?.secondaryItem?.text || ""}
-          </Link>
+          {breadCrumbData?.secondaryItem?.route && (
+            <Link
+              as={NextLink}
+              href={breadCrumbData?.secondaryItem?.route || "/"}
+              textTransform="capitalize"
+            >
+              {breadCrumbData?.secondaryItem?.text || ""}
+            </Link>
+          )}
+
+          {!breadCrumbData?.secondaryItem?.route && (
+            <Text textTransform="capitalize">
+              {breadCrumbData?.secondaryItem?.text || ""}
+            </Text>
+          )}
         </BreadcrumbItem>
       </Breadcrumb>
 
