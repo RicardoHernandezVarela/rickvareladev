@@ -1,6 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
 
-import InlineCards from "@/src/sections/InlineCards";
+import LoadingSpinner from "@/src/components/Layout/LoadingSpinner";
+import ProjectsCards from "@/src/sections/ProjectsCards";
+
+import useSanityData from "@/src/hooks/useSanityData";
 
 const styles = {
   mainContainer: {
@@ -12,9 +15,13 @@ const styles = {
 };
 
 function ProjectsPage() {
+  const { data, status } = useSanityData({ dataItem: "project" });
+
   return (
     <Flex {...styles.mainContainer} direction="column" overflowY="scroll">
-      <InlineCards />
+      <LoadingSpinner status={status} />
+
+      <ProjectsCards status={status} data={data} />
     </Flex>
   );
 }

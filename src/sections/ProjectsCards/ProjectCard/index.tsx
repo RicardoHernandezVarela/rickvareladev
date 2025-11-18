@@ -6,8 +6,8 @@ import { MdWeb } from "react-icons/md";
 
 const styles = {
   card: {
-    w: { base: "100%", lg: "85%" },
-    h: "100px",
+    w: { base: "100%", md: "500px" },
+    h: { base: "130px", md: "200px" },
     alignItems: "center",
     bg: "magnolia",
     borderRadius: "16px",
@@ -17,7 +17,7 @@ const styles = {
   },
   textContainer: {
     w: "100%",
-    ml: { base: "12px", lg: "24px" },
+    ml: { base: "12px", lg: "16px" },
     gap: "10px",
   },
   link: {
@@ -27,19 +27,28 @@ const styles = {
     },
   },
   projectName: {
-    fontSize: { base: "14px", lg: "16px" },
-    fontWeight: "500",
+    fontSize: { base: "12px", lg: "14px" },
+    fontWeight: "700",
     lineHeight: "19px",
     letterSpacing: "0.5px",
     color: "eerieBlack",
   },
-  tools: {
+  summary: {
     maxW: "90%",
-    fontSize: { base: "12px", lg: "14px" },
+    display: { base: "none", md: "block" },
+    fontSize: { base: "12px", lg: "12px" },
     fontWeight: "500",
     lineHeight: "16px",
     letterSpacing: "0.5px",
     color: "mainMenuOption",
+  },
+  tools: {
+    maxW: "90%",
+    fontSize: { base: "11px", lg: "12px" },
+    fontWeight: "500",
+    lineHeight: "16px",
+    letterSpacing: "0.5px",
+    color: "bleu",
   },
   repoLink: {
     w: "32px",
@@ -68,7 +77,8 @@ function ProjectCard(props: { project: Record<string, any> }) {
   return (
     <Flex {...styles.card} position="relative">
       <Image
-        boxSize="98px"
+        width={{ base: "128px", md: "190px" }}
+        height={{ base: "128px", md: "198px" }}
         objectFit="cover"
         src={project?.image?.url}
         alt="project img"
@@ -78,6 +88,7 @@ function ProjectCard(props: { project: Record<string, any> }) {
 
       <Flex {...styles.textContainer} direction="column">
         <Text {...styles.projectName}>{project?.name}</Text>
+        <Text {...styles.summary}>{project?.summary}</Text>
         <Text {...styles.tools}>{project?.stack}</Text>
       </Flex>
 

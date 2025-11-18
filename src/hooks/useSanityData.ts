@@ -41,17 +41,17 @@ function useSanityData(props: { dataItem: string }) {
 
     const responseJSON = await response?.json();
 
-    const workExpData = responseJSON?.data;
+    const responseData = responseJSON?.data;
 
-    setData(workExpData);
+    setData(responseData);
 
     /* STORE RESULT */
-    if (workExpData) {
-      insertSanityData(dataItem, workExpData);
+    if (responseData) {
+      insertSanityData(dataItem, responseData);
     }
 
     setStatus(
-      workExpData ? requestStatus.HAS_SUCCESS : requestStatus.HAS_ERROR
+      responseData ? requestStatus.HAS_SUCCESS : requestStatus.HAS_ERROR
     );
   };
 
