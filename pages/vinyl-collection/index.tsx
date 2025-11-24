@@ -43,6 +43,7 @@ function VinylCollection() {
                 artistName={vinyl?.artist}
                 year={vinyl?.year}
                 preview_url={vinyl?.preview_url}
+                _rev={vinyl?._rev}
               />
             );
           })}

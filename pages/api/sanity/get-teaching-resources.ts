@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   try {
-    const query = `*[_type == "teachingResource"] | order(_createdAt, desc) {..., "file": note.asset->{url}}`;
+    const query = `*[_type == "teachingResource"] | order(_createdAt, desc) {..., "file": note.asset->{url}, "image": image.asset->{url}}`;
     const data = await client.fetch(query);
 
     res.status(200).json({ data });

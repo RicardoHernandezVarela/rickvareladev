@@ -16,8 +16,6 @@ const styles = {
 function TeachingResources() {
   const { data, status } = useSanityData({ dataItem: "teaching-resources" });
 
-  console.log("data: ", data);
-
   return (
     <Flex {...styles.mainContainer} direction="column" overflowY="scroll">
       <NotesCards data={data} status={status} />
