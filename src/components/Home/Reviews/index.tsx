@@ -148,7 +148,11 @@ function Reviews() {
               </Flex>
 
               <Flex {...styles.reviewDetails} direction="column">
-                <Link {...styles.recordName} as={NextLink} href={"/"}>
+                <Link
+                  {...styles.recordName}
+                  as={NextLink}
+                  href={`${routes.ALBUM_REVIEW}/${selectedReview?._rev}`}
+                >
                   <Text>{selectedReview?.name}</Text>
                 </Link>
                 <Text {...styles.artistName}>{selectedReview?.artist}</Text>
@@ -156,7 +160,7 @@ function Reviews() {
             </Flex>
           </SlideFade>
 
-          <Link {...styles.seeAll} as={NextLink} href={routes.HOME}>
+          <Link {...styles.seeAll} as={NextLink} href={routes.REVIEWS}>
             <Text>{"All Reviews"}</Text>
           </Link>
         </>

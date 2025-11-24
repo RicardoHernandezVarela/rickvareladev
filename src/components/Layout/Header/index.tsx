@@ -15,6 +15,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { RiMenu2Fill } from "react-icons/ri";
 
 import breadCrumbsData from "../../../constants/breadCrumbsData";
+import routes from "@/src/constants/routes";
 
 const styles = {
   header: {
@@ -64,6 +65,29 @@ const styles = {
   },
 };
 
+const singleItemPage: Record<string, any> = {
+  "work-experience": {
+    primaryItem: { text: "home", route: routes.HOME },
+    secondaryItem: { text: "experience", route: routes.EXPERIENCE },
+  },
+  "album-review": {
+    primaryItem: { text: "home", route: routes.HOME },
+    secondaryItem: { text: "reviews", route: routes.REVIEWS },
+  },
+};
+
+const getFromSingleItemPage = ({ pathname }: { pathname: string }) => {
+  let dataByPath;
+
+  for (const id in singleItemPage) {
+    if (!pathname.includes(id)) continue;
+
+    dataByPath = singleItemPage[id];
+  }
+
+  return dataByPath;
+};
+
 function Header(props: { onOpen: () => void }) {
   const { onOpen } = props;
 
@@ -72,7 +96,8 @@ function Header(props: { onOpen: () => void }) {
 
   //console.log("pathname: ", pathname);
 
-  const breadCrumbData = breadCrumbsData[pathname];
+  const breadCrumbData =
+    breadCrumbsData[pathname] || getFromSingleItemPage({ pathname });
 
   return (
     <Flex {...styles.header} direction={{ base: "column-reverse", lg: "row" }}>

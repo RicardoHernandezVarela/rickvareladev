@@ -1,6 +1,10 @@
-import { Flex, Badge, Text } from "@chakra-ui/react";
+import NextLink from "next/link";
+
+import { Flex, Link, Text } from "@chakra-ui/react";
 
 import { FaCalendar } from "react-icons/fa";
+
+import routes from "@/src/constants/routes";
 
 const styles = {
   selectedCardContainer: {
@@ -37,6 +41,12 @@ const styles = {
     fontSize: "16px",
     fontWeight: "bold",
   },
+  link: {
+    _hover: {
+      textDecoration: "none",
+      opacity: "0.9",
+    },
+  },
   summary: {
     fontSize: "12px",
   },
@@ -60,12 +70,24 @@ function SelectedCard(props: { selectedCard: Record<string, any> }) {
       direction="column"
     >
       <Flex>
-        <Text {...styles.position} textAlign="center">{selectedCard?.position}</Text>
+        <Text {...styles.position} textAlign="center">
+          {selectedCard?.position}
+        </Text>
       </Flex>
 
-      <Flex {...styles.bottomContainer} direction="column" color={selectedCard?.color || "white"}>
+      <Flex
+        {...styles.bottomContainer}
+        direction="column"
+        color={selectedCard?.color || "white"}
+      >
         <Text {...styles.title}>{selectedCard?.place}</Text>
-        <Text {...styles.summary}>{selectedCard?.summary}</Text>
+        <Link
+          {...styles.link}
+          as={NextLink}
+          href={`${routes.WORK_EXPERIENCE_ITEM}${selectedCard?._rev}`}
+        >
+          <Text {...styles.summary}>{selectedCard?.summary}</Text>
+        </Link>
 
         <Flex {...styles.date}>
           <FaCalendar />
