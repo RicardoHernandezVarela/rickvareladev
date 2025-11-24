@@ -1,4 +1,12 @@
-import { Flex, Image, Text, Button } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Text,
+  Button,
+  Box,
+  Avatar,
+  Badge,
+} from "@chakra-ui/react";
 
 import { IoIosArrowDropright } from "react-icons/io";
 
@@ -36,7 +44,7 @@ const styles = {
   },
 };
 
-function NoteCard({
+export function NoteCard({
   item,
   onNoteSelected,
 }: {
@@ -61,11 +69,13 @@ function NoteCard({
 
       <Text textTransform="capitalize">{item?.subject}</Text>
 
-      <Text textTransform="capitalize" noOfLines={2}>{item?.title}</Text>
+      <Text textTransform="capitalize" noOfLines={2}>
+        {item?.title}
+      </Text>
 
       <Text textTransform="capitalize">{item?.date}</Text>
 
-      <Flex position="absolute" left="16px" bottom="16px" >
+      <Flex position="absolute" left="16px" bottom="16px">
         <Button variant="unstyled" {...styles.button} onClick={onNoteSelected}>
           <IoIosArrowDropright size="26px" />
         </Button>
@@ -74,4 +84,59 @@ function NoteCard({
   );
 }
 
-export default NoteCard;
+const notePillSyles = {
+  mainContainer: {
+    width: { sm: "280px", md: "320px" },
+    color: "magnolia",
+    p: "5px 10px",
+    border: "1px",
+    borderRadius: "20px",
+    boxShadow: "md",
+    cursor: "pointer",
+    _hover: {
+      opacity: 0.9,
+    },
+  },
+  avatar: {
+    p: "3px",
+    bg: "bleu",
+  },
+  title: {
+    fontSize: "12px",
+    fontWeight: "bold",
+    color: "delftBlue",
+  },
+  subject: {
+    fontSize: "10px",
+    color: "eerieBlack",
+  },
+};
+
+export function NotePill({
+  item,
+  onNoteSelected,
+}: {
+  item: Record<string, any>;
+  onNoteSelected: () => void;
+}) {
+  return (
+    <Flex
+      {...notePillSyles.mainContainer}
+      borderColor={item?.borderColor || "bleu"}
+      onClick={onNoteSelected}
+    >
+      <Avatar src={item?.image?.url} {...notePillSyles.avatar} />
+      <Box ml="3">
+        <Text {...notePillSyles.title} noOfLines={1}>
+          {item?.title}
+          {/* <Badge ml="1" colorScheme="green">
+            <IoCloudDownload />
+          </Badge> */}
+        </Text>
+        <Badge px="5px">
+          <Text {...notePillSyles.subject}>{item?.subject}</Text>
+        </Badge>
+      </Box>
+    </Flex>
+  );
+}

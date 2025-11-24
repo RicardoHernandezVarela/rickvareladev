@@ -1,11 +1,18 @@
 import { useMemo, useState } from "react";
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  useDisclosure,
+  Avatar,
+  Box,
+  Badge,
+} from "@chakra-ui/react";
 
 import LoadingSpinner from "@/src/components/Layout/LoadingSpinner";
 
 import PDFviewerDialog from "./PDFviewerDialog";
 
-import NoteCard from "./NoteCard";
+import { NoteCard, NotePill } from "./NoteCard";
 
 const styles = {
   mainContainer: {
@@ -116,7 +123,7 @@ function NotesCards({
               >
                 {category?.content?.map((item: Record<string, any>) => {
                   return (
-                    <NoteCard
+                    <NotePill
                       key={item._id}
                       item={item}
                       onNoteSelected={() => onNoteSelected({ note: item })}

@@ -8,6 +8,7 @@ const routes = {
   NOTES: "/teaching-resources",
   BOOTCAMP_PROJECT: "/bootcamp-project",
   PROJECTS: "/projects",
+  ALBUM_REVIEW: "/album-review"
 };
 
 export default routes;

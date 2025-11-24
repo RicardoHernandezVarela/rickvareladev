@@ -8,6 +8,7 @@ import useSanityData from "@/src/hooks/useSanityData";
 
 import scrollBarStyles from "@/src/constants/scrollBarStyles";
 import requestStatus from "@/src/constants/requestStatus";
+import routes from "@/src/constants/routes";
 
 const styles = {
   myProjectsContainer: {
@@ -64,7 +65,7 @@ function MyProjects() {
       <Flex {...styles.titleContainer}>
         <Text {...styles.title}>{"My Projects"}</Text>
 
-        <Link {...styles.seeAll} as={NextLink} href={"/"}>
+        <Link {...styles.seeAll} as={NextLink} href={routes.PROJECTS}>
           <Text>{"See All"}</Text>
         </Link>
       </Flex>

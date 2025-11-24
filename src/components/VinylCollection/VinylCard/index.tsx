@@ -4,6 +4,8 @@ import { Flex, Text, Image, Link, Skeleton } from "@chakra-ui/react";
 
 import AudioPlayer from "../../Layout/AudioPlayer";
 
+import routes from "@/src/constants/routes";
+
 const styles = {
   card: {
     w: { base: "87vw", md: "305px", lg: "305px", xl: "21.17vw" },
@@ -57,6 +59,7 @@ function VinylCard({
   artistName,
   year,
   preview_url,
+  _rev,
 }: {
   loading: boolean;
   img: string;
@@ -64,11 +67,16 @@ function VinylCard({
   artistName: string;
   year: string;
   preview_url: string;
+  _rev: string;
 }) {
   const [isHover, setIsHover] = useState(false);
 
   return (
-    <Link {...styles.cardLink} as={NextLink} href={"/"}>
+    <Link
+      {...styles.cardLink}
+      as={NextLink}
+      href={`${routes.ALBUM_REVIEW}/${_rev}`}
+    >
       <Flex
         direction="column"
         onMouseEnter={() => setIsHover(true)}
